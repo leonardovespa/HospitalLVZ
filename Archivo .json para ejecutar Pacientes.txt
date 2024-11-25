@@ -1,0 +1,51 @@
+Archivo .json paraPacientes.cpp con el main.cpp fuera de Paciente
+
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compilar Proyecto C++",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-g",
+        "output/main.cpp",
+        "output/Paciente.cpp",
+        "-o",
+        "output/HospitalLVZ"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
+    }
+  ]
+}
+
+
+Archivo .json paraPacientes.cpp con el main.cpp dentro de Paciente
+
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compilar Proyecto C++",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-g",
+        "output/GestionPaciente.cpp",     // Solo compilas el archivo Paciente.cpp
+        "-o",
+        "output/GestionPaciente.exe"   // Genera el ejecutable con la extensión .exe
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [
+        "$gcc"
+      ]
+    }
+  ]
+} 

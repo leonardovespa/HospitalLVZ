@@ -7,7 +7,7 @@
       "command": "g++",
       "args": [
         "-g",
-        "output/Paciente.cpp",     // Solo compilas el archivo Paciente.cpp
+        "output/GestionPaciente.cpp",     // Solo compilas el archivo GestionPaciente.cpp
         "-o",
         "output/GestionPaciente.exe"   // Genera el ejecutable con la extensión .exe
       ],
@@ -20,6 +20,4 @@
       ]
     }
   ]
-} 
-
-  
+}
