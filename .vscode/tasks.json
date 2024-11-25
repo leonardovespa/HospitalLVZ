@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compilar Proyecto C++",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-g",
+        "output/main.cpp",
+        "output/Paciente.cpp",
+        "-o",
+        "output/HospitalLVZ"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
+    }
+  ]
+}
+
+  

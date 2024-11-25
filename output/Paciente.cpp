@@ -9,8 +9,8 @@ class Paciente {
 	private:
 	string nombre;
 	int ID;
-	string fechaIngreso,
-	vector<string> historialClínico;
+	string fechaIngreso;
+	vector<string> historialClinico;
 	
 	public:
 	// Constructor
