@@ -1,0 +1,42 @@
+Módulo de Citas Médicas
+
+class Citas {
+	int citaID;
+	int pacienteID;
+	int medicoID;
+	string fecha;
+	string urgencia;
+	string estado; 
+
+// Asignar cita a médico y paciente
+
+	void asignarCita(int citaID, int pacienteID, int medicoID, string fecha, string urgencia) {
+		this->citaID = citaID;
+		this->pacienteID == pacienteID;
+		this->medicoID = medicoID;
+		this->fecha = fecha;
+		this->urgencia = urgencia,
+		this->estado = "activa";
+	}
+
+// Cancelación cita
+
+	void cancelarCita() {
+		estado = "cancelada";
+	}
+
+// Listado de citas por fecha o urgencia
+
+	void ordenarCitas(vector<cita>& citas, string criterio( {
+	// implementar ordenación
+	}
+
+// Modificar citas
+	
+	void modificarCita(string nuevaFecha, string nuevaUrgencia) {
+		fecha = nuevaFecha;
+		urgencia = nuevaUrgencia;
+	}
+};
+		
+	

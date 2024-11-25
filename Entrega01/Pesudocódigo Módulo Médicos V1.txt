@@ -1,0 +1,32 @@
+Módulo para Médicos
+
+class Medico {
+	string nombre;
+	int ID;
+	string especialidad;
+	bool disponibilidad;
+
+// Alta de médico
+	void altaMedico(string nombre, int ID, string specialidad) {
+		this->nombre = nombre;
+		this->ID = ID;
+		this->especialidad = especialidad;
+		this->disponibilidad = true;
+	}
+
+// Baja de médico
+	void bajaMedico() {
+		delete this;
+	}
+
+// Asignar especialidades a los médicos
+	void asignarEspecialidad(string especialidadNueva) {
+		especialidad = especialidadNueva;
+	}
+
+// Listado de médicos por especialidad o disponibilidad
+		bool listadoMedicosPorCriterio(string criterio) {
+		// filtrar según especialidad o disponibilidad
+	}
+};
+	

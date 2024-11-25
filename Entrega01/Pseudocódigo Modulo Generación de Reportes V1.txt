@@ -1,0 +1,23 @@
+Modulo Generación de reportes
+
+class Reporte {
+
+// Listado de pacientes atendidos en un rango de fecha
+
+	void generarReportePacientesAtendidos(vector<Paciente>& pacientes, string fechaInicio, string fechaFin) {
+		// filtrar pacientes según fechas o atención
+	}
+
+// Citas pendientes por médico o especialidad
+	
+	void reporteCitasPendientes(vector<Cita>& citas, int medicoID) {
+		// filtrar citas pendientes según ID de médico o especialidad
+	}
+
+// Reporte de pacientes con enfermedades crónicas
+
+	void reportePacientescronicos(vector<Paciente>& pacientes) {
+		// Filtrar pacientes con enfermedades crónicas
+	}
+};
+

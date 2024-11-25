@@ -1,0 +1,42 @@
+Módulo de Pacientes:
+
+Class Paciente {
+	string nombre;
+	int ID;
+	string fechaIngreso;
+	vector <string> historialClinico:
+
+// Alta de paciente
+
+	Void altaPaciente(string nombre, int ID, string fecha ingreso) {
+		this ->nombre = nombre;
+		this ->ID = ID;
+		this ->fechaIngreso = fechaIngreso;
+	}
+
+// Baja de paciente
+
+	void bajaPaciente() {
+		delete this;
+	}
+
+// Modificar datos personales
+
+	void modificarDatos(string nuevoNombre, string nuevaFechaIngreso, string nuevoID) {
+		nombre = nuevoNombre;
+		fechaIngreso = nuevaFechaIngreso;
+		ID = nuevoID.
+	}
+
+// Buscar Paciente
+
+	bool buscarPaciente(string criterio) {
+		// Introducir nombre, ID o fechaIngreso
+	}
+
+// Registro historial clínico
+
+	void registrarHistorial(string entrada) {
+		historialClinico.push_back(entrada);
+	}
+};

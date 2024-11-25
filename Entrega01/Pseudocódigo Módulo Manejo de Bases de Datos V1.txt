@@ -1,0 +1,28 @@
+Módulo de manejo de Bases de Datos
+
+class Archivo {
+
+// Guardar datos en archivo
+
+	void guardarDatos(vector<Paciente> pacientes, vector<Medico> médicos, vector<Citas> citas) {
+		ofstream archivo ("GrupoHospitalarioLVZ.xlsx");
+		for (Paciente paciente : pacientes) {
+			archivo << paciente.datos(); // Método que devuelve todos los datos del paciente
+		}
+		archivo.close();
+	
+
+// Cargar datos desde archivo
+
+	void cargarDatos(vector<Paciente>& pacientes, vector<Medico>& médicos, vector<Cita>& citas) {
+		ifstream archivo("GrupoHospitalarioLVZ.xlsx");
+		// Leer datos de archivo y cargar en las listas de objetos
+		archivo.close();
+	}
+
+// Backup de la Base de datos
+
+	void backup() {
+		// Crear una copia de seguridad de la BBDD actual
+	}
+};
