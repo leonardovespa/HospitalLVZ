@@ -17,4 +17,4 @@ int main() {
     paciente.mostrarDatos();
 
     return 0; // Indicar que el programa finalizó correctamente
-}
+};

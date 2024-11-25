@@ -1,4 +1,4 @@
-// Clase Paciente
+// Clase Paciente --> única sin el archivo main.cpp en la clase
 
 #include <iostream>
 #include <string>

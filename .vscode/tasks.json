@@ -7,18 +7,19 @@
       "command": "g++",
       "args": [
         "-g",
-        "output/main.cpp",
-        "output/Paciente.cpp",
+        "output/Paciente.cpp",     // Solo compilas el archivo Paciente.cpp
         "-o",
-        "output/HospitalLVZ"
+        "output/GestionPaciente.exe"   // Genera el ejecutable con la extensión .exe
       ],
       "group": {
         "kind": "build",
         "isDefault": true
       },
-      "problemMatcher": ["$gcc"]
+      "problemMatcher": [
+        "$gcc"
+      ]
     }
   ]
-}
+} 
 
   
