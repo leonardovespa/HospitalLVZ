@@ -1,23 +1,23 @@
 {
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "Compilar Proyecto C++",
-      "type": "shell",
-      "command": "g++",
-      "args": [
-        "-g",
-        "output/GestionPaciente.cpp",     // Solo compilas el archivo GestionPaciente.cpp
-        "-o",
-        "output/GestionPaciente.exe"   // Genera el ejecutable con la extensión .exe
-      ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "problemMatcher": [
-        "$gcc"
-      ]
-    }
-  ]
-}
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Compilar Proyecto C++",
+        "type": "shell",
+        "command": "g++",
+        "args": [
+          "-g",
+          "output/GestionPaciente.cpp",     // Solo compilas el archivo Paciente.cpp
+          "-o",
+          "output/GestionPaciente.exe"   // Genera el ejecutable con la extensión .exe
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": [
+          "$gcc"
+        ]
+      }
+    ]
+  }
