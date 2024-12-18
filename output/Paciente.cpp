@@ -1,56 +1,50 @@
-// Clase Paciente --> única sin el archivo main.cpp en la clase
+// Clase Paciente
 
+#include "Paciente.h"
 #include <iostream>
-#include <string>
-#include <vector>
 using namespace std;
 
-class Paciente {
-	private:
-	string nombre;
-	int ID;
-	string fechaIngreso;
-	vector<string> historialClinico;
-	
-	public:
-	// Constructor
-	Paciente(string nombre, int ID, string fechaIngreso) {
-		this->nombre = nombre;
-		this->ID = ID;
-		this->fechaIngreso = fechaIngreso;
-	}
-	
-	// Alta de paciente
-	void altaPaciente(string nombre, int ID, string fechaIngreso) {
-		this->nombre = nombre;
-		this->ID = ID;
-		this->fechaIngreso = fechaIngreso;
-	}
-	
-	// Baja de Paciente
-	void bajaPaciente() {
-		cout << "Paciente " << nombre << " dado de baja con éxito." << endl;
-	}
-	
-	// Modificación de datos personales
-	void modificarDatos(string nuevoNombre, string nuevaFechaIngreso) {
-		nombre = nuevoNombre;
-		fechaIngreso = nuevaFechaIngreso;
-		cout << "Datos del Paciente modificado con éxito." << nombre << endl;
-	}
-	
-	// Buscar Paciente
-	bool buscarPaciente(int id) {
-		return this->ID == id;
-	}
-	
-	// Registro historial clínico
-	void registrarHistorial(string entrada) {
-		historialClinico.push_back(entrada);
-	}
-	
-	// Mostrar datos del paciente
-	void mostrarDatos() {
-		cout << "ID: " << ID << ", Nombre: " << nombre << ", Fecha de ingreso: " << fechaIngreso << endl;
-	}
-};
+Paciente::Paciente(string nombre, int ID, string fechaIngreso) {
+	this->nombre = nombre;
+	this->ID = ID;
+	this->fechaIngrso = fechaIngreso;
+}
+
+void Paciente::altaPaciente(string nombre, int ID, string fechaIngreso) {
+	this->nombre = nombre;
+	this->ID = ID;
+	this->fechaIngreso = fechaIngreso;
+	cout << "Paciente " << nombre << " dado de alta con éxito." << endl;
+}
+
+void Paciente::bajaPaciente() {
+	cout << "Paciente " << nombre << " dado de baja con éxito." << endl;
+}
+
+void Paciente::modificarDatos(string nuevoNombre, string nuevaFechaIngreso) {
+
+}
+
+bool Paciente::buscarPaciente(int id) {
+	return this->ID == id;
+}
+
+void Paciente::registrarHistorial(string entrada) {
+	historialClinico.push_back(entrada);
+}
+
+void Paciente::mostrarDatos() {
+	cout << "ID: " << ID << ", Nombre: " << nombre << ", Fecha de ingreso: " << fechaIngreso << endl;
+}
+
+int Paciente::getID() const {
+	return ID;
+}
+
+string Paciente::getNombre() const {
+	return nombre;
+}
+
+string Paciente::getFechaIngreso() const {
+	return fechaIngreso;
+}
