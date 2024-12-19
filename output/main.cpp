@@ -11,25 +11,25 @@ using namespace std;
 void mostrarMenu() {
     cout << "\n=== Sistema HospitalLVZ ===\n";
     cout << "1. Gestionar Pacientes\n";
-    cout << "2. Gestionar Médicos\n";
+    cout << "2. Gestionar Medicos\n";
     cout << "3. Gestionar Citas\n";
     cout << "4. Generar Reportes\n";
     cout << "5. Guardar Datos\n";
     cout << "6. Cargar Datos\n";
     cout << "0. Salir\n";
-    cout << "Seleccione una opción: ";
+    cout << "Seleccione una opcion: ";
 }
 
 void gestionarPacientes(vector<Paciente>& pacientes) {
     int opcion;
     do {
-        cout << "\n--- Gestión de Pacientes ---\n";
+        cout << "\n--- Gestion de Pacientes ---\n";
         cout << "1. Alta de Paciente\n";
         cout << "2. Baja de Paciente\n";
         cout << "3. Modificar Datos\n";
         cout << "4. Mostrar Pacientes\n";
-        cout << "0. Volver al Menú Principal\n";
-        cout << "Seleccione una opción: ";
+        cout << "0. Volver al Menu Principal\n";
+        cout << "Seleccione una opcion: ";
         cin >> opcion;
 
         if (opcion == 1) {
@@ -51,7 +51,7 @@ void gestionarPacientes(vector<Paciente>& pacientes) {
             auto it = find_if(pacientes.begin(), pacientes.end(), [ID](const Paciente& p) { return p.getID() == ID; });
             if (it != pacientes.end()) {
                 pacientes.erase(it);
-                cout << "Paciente eliminado con éxito.\n";
+                cout << "Paciente eliminado con exito.\n";
             } else {
                 cout << "Paciente no encontrado.\n";
             }
@@ -78,7 +78,7 @@ void gestionarPacientes(vector<Paciente>& pacientes) {
                 p.mostrarDatos();
             }
         } else if (opcion != 0) {
-            cout << "Opción no válida. Intente de nuevo.\n";
+            cout << "Opcion no valida. Intente de nuevo.\n";
         }
     } while (opcion != 0);
 }
@@ -86,13 +86,13 @@ void gestionarPacientes(vector<Paciente>& pacientes) {
 void gestionarMedicos(vector<Medico>& medicos) {
     int opcion;
     do {
-        cout << "\n--- Gestión de Médicos\n";
-        cout << "1. Alta de Médico\n";
-        cout << "2. Baja de Médico\n";
+        cout << "\n--- Gestion de Medicos\n";
+        cout << "1. Alta de Medico\n";
+        cout << "2. Baja de Medico\n";
         cout << "3. Modificar Especialidad\n";
-        cout << "4. Mostrar Médicos\n";
-        cout << "0. Volver al Menú Principal\n";
-        cout << "Seleccione una opción: ";
+        cout << "4. Mostrar Medicos\n";
+        cout << "0. Volver al Menu Principal\n";
+        cout << "Seleccione una opcion: ";
         cin >> opcion;
 
         if (opcion == 1) {
@@ -107,21 +107,21 @@ void gestionarMedicos(vector<Medico>& medicos) {
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, especialidad);
             medicos.emplace_back(nombre, ID, especialidad);
-            cout << "Médico agregado con éxito.\n";
+            cout << "Medico agregado con exito.\n";
         } else if (opcion == 2) {
             int ID;
-            cout << "Ingrese el ID de médico a eliminar: ";
+            cout << "Ingrese el ID de medico a eliminar: ";
             cin >> ID;
             auto it = find_if(medicos.begin(), medicos.end(), [ID](const Medico& m) { return m.getID() == ID; });
             if (it != medicos.end()) {
                 medicos.erase(it);
-                cout << "Médico eliminado con éxito\n";
+                cout << "Medico eliminado con exito\n";
             } else {
-                cout << "Médico no encontrado.\n";
+                cout << "Medico no encontrado.\n";
             }
         } else if (opcion ==3) {
             int ID;
-            cout << "Ingrese el ID del médico a modificar: ";
+            cout << "Ingrese el ID del medico a modificar: ";
             cin >> ID;
             auto it = find_if(medicos.begin(), medicos.end(), [ID](const Medico& m) { return m.getID() == ID; });
             if (it != medicos.end()) {
@@ -131,15 +131,15 @@ void gestionarMedicos(vector<Medico>& medicos) {
                 getline(cin, nuevaEspecialidad);
                 it->asignarEspecialidad(nuevaEspecialidad);
             } else {
-                cout << "Médico no encontrado.\n";
+                cout << "Medico no encontrado.\n";
             }
         } else if (opcion == 4) {
-            cout << "\n--- Lista de Médicos---\n";
+            cout << "\n--- Lista de Medicos---\n";
             for (const auto& m : medicos) {
                 m.mostrarDatos();
             }
         } else if (opcion != 0) {
-            cout << "Opción no válida. Intente de nuevo.\n";
+            cout << "Opcion no valida. Intente de nuevo.\n";
             }
     } while (opcion != 0);
 }
@@ -171,21 +171,21 @@ int main() {
             break;
 
             case 3:
-            cout << "Funcionalidad de Reportes aún en desarrollo.\n";
+            cout << "Funcionalidad de Reportes aun en desarrollo.\n";
             break;
 
             case 4:
-            cout << "Funcionalidad de Reportes aún en desarrollo.\n";
+            cout << "Funcionalidad de Reportes aun en desarrollo.\n";
             break;
 
             case 5:
             bbdd.guardarDatosMedicos(medicos);
-            cout << "Datos guardados con éxito.\n";
+            cout << "Datos guardados con exito.\n";
             break;
 
             case 6:
             bbdd.cargarDatosMedicos(medicos);
-            cout << "Datos cargados con éxito.\n";
+            cout << "Datos cargados con exito.\n";
             break;
 
             case 0:
@@ -195,7 +195,7 @@ int main() {
             break;
 
             default:
-            cout << "Opción no válida. Intente de nuevo.\n";
+            cout << "Opcion no valida. Intente de nuevo.\n";
             break;
         }
     } while (opcion !=0);

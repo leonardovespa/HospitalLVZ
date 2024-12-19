@@ -14,11 +14,11 @@ void Paciente::altaPaciente(string nombre, int ID, string fechaIngreso) {
 	this->nombre = nombre;
 	this->ID = ID;
 	this->fechaIngreso = fechaIngreso;
-	cout << "Paciente " << nombre << " dado de alta con éxito." << endl;
+	cout << "Paciente " << nombre << " dado de alta con exito." << endl;
 }
 
 void Paciente::bajaPaciente() {
-	cout << "Paciente " << nombre << " dado de baja con éxito." << endl;
+	cout << "Paciente " << nombre << " dado de baja con exito." << endl;
 }
 
 void Paciente::modificarDatos(string nuevoNombre, string nuevaFechaIngreso) {

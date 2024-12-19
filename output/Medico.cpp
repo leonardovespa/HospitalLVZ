@@ -19,7 +19,7 @@ void Medico::altaMedico(string nombre, int ID, string especialidad) {
 }
 
 void Medico::bajaMedico() {
-	cout << "medico " << nombre << " dado de baja con éxito." << endl;
+	cout << "medico " << nombre << " dado de baja con exito." << endl;
 }
 
 void Medico::asignarEspecialidad(string especialidadNueva) {
@@ -27,7 +27,7 @@ void Medico::asignarEspecialidad(string especialidadNueva) {
 }
 
 void Medico::cambiarDisponibilidad(bool estado) {
-	cout << "ID: " << ID << ", Nombre: " << nombre << ", Especialidad: " << especialidad << ", Disponible: " << (disponibilidad ? "Sí" : "No") << endl;
+	cout << "ID: " << ID << ", Nombre: " << nombre << ", Especialidad: " << especialidad << ", Disponible: " << (disponibilidad ? "Si" : "No") << endl;
 }
 
 int Medico::getID() const {
