@@ -34,9 +34,9 @@ void gestionarPacientes(vector<Paciente>& pacientes) {
 
         if (opcion == 1) {
             string nombre, fechaIngreso;
-            int ID,
+            int ID;
             cout << "Ingrese Nombre: ";
-            cin.ignore();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, nombre);
             cout << "Ingrese ID: ";
             cin >> ID;
@@ -63,9 +63,9 @@ void gestionarPacientes(vector<Paciente>& pacientes) {
             if (it != pacientes.end()) {
                 string nuevoNombre, nuevaFechaIngreso;
                 cout << "Ingrese Nuevo Nombre: ";
-                cin.ignore();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 getline(cin, nuevoNombre);
-                cout << "Ingrese nueva Fecha de Ingreso (YYY-MM-DD): ";
+                cout << "Ingrese nueva Fecha de Ingreso (YYYY-MM-DD): ";
                 cin >> nuevaFechaIngreso;
                 it->modificarDatos(nuevoNombre, nuevaFechaIngreso);
             } else {
@@ -77,6 +77,8 @@ void gestionarPacientes(vector<Paciente>& pacientes) {
             for (const auto& p : pacientes) {
                 p.mostrarDatos();
             }
+        } else if (opcion != 0) {
+            cout << "Opción no válida. Intente de nuevo.\n";
         }
     } while (opcion != 0);
 }
@@ -89,7 +91,7 @@ void gestionarMedicos(vector<Medico>& medicos) {
         cout << "2. Baja de Médico\n";
         cout << "3. Modificar Especialidad\n";
         cout << "4. Mostrar Médicos\n";
-        cout << "0. Volver al Menú Prncipal\n";
+        cout << "0. Volver al Menú Principal\n";
         cout << "Seleccione una opción: ";
         cin >> opcion;
 
@@ -97,12 +99,12 @@ void gestionarMedicos(vector<Medico>& medicos) {
             string nombre, especialidad;
             int ID;
             cout << "Ingrese Nombre: ";
-            cin.ignore();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, nombre);
             cout << "Ingrese ID: ";
             cin >> ID;
             cout << "Ingrese Especialidad: ";
-            cin.ignore();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, especialidad);
             medicos.emplace_back(nombre, ID, especialidad);
             cout << "Médico agregado con éxito.\n";
@@ -125,7 +127,7 @@ void gestionarMedicos(vector<Medico>& medicos) {
             if (it != medicos.end()) {
                 string nuevaEspecialidad;
                 cout << "Ingrese Nueva Especialidad: ";
-                cin.ignore();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 getline(cin, nuevaEspecialidad);
                 it->asignarEspecialidad(nuevaEspecialidad);
             } else {
@@ -136,7 +138,9 @@ void gestionarMedicos(vector<Medico>& medicos) {
             for (const auto& m : medicos) {
                 m.mostrarDatos();
             }
-        }
+        } else if (opcion != 0) {
+            cout << "Opción no válida. Intente de nuevo.\n";
+            }
     } while (opcion != 0);
 }
 
@@ -164,7 +168,7 @@ int main() {
             break;
 
             case 3:
-            cout << "Funcionalidad de Reportes aún en desarrollo.\n"
+            cout << "Funcionalidad de Reportes aún en desarrollo.\n";
             break;
 
             case 4:
@@ -173,7 +177,7 @@ int main() {
 
             case 5:
             bbdd.guardarDatosMedicos(medicos);
-            cout << "Datos guardados con eíto.\n";
+            cout << "Datos guardados con éxito.\n";
             break;
 
             case 6:
@@ -186,6 +190,7 @@ int main() {
 
             default:
             cout << "Opción no válida. Intente de nuevo.\n";
+            break;
         }
     } while (opcion !=0);
 

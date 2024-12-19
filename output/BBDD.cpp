@@ -18,7 +18,7 @@ void BBDD::guardarDatosMedicos(cons vector<Medico>& medicos) {
 }
 
 //Cargar datos de Médicos
-void BBDD::cargarDatosMedicos(vector<Medico>& medicos) {
+void BBDD::cargarDatosMedicos(const vector<Medico>& medicos) {
 	ifstream archivo(medicosLVZ.csv);
 	if (!archivo.is_open()) {
 		cerr << "Error al abrir el archivo para cargar médicos." << endl;
