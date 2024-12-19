@@ -187,6 +187,9 @@ int main() {
 
             case 0:
             cout << "Saliendo del sistema...\n";
+            bbdd.guardarDatosMedicos(medicos);
+            bbdd.guardarDatosPacientes(pacientes);
+            break;
 
             default:
             cout << "Opción no válida. Intente de nuevo.\n";
