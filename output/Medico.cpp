@@ -45,3 +45,7 @@ string Medico::getEspecialidad() const {
 bool Medico::isDisponible() const {
 	return disponibilidad;
 }
+
+void Medico::mostrarDatos() const {
+	cout << "ID: " << ID << ", Nombre: " << nombre << ", Especialidad: " << especialidad << ", Disponible: " << (disponibilidad ? "Sí" : "No") << endl;
+}

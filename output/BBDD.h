@@ -12,7 +12,7 @@ class BBDD {
 
     //Métodos para Médico
     void guardarDatosMedicos(const vector<Medico>& medicos);
-    void cargarDatosMedicos(const vector<Medico>& medicos);
+    void cargarDatosMedicos(vector<Medico>& medicos);
 };
 
 #endif

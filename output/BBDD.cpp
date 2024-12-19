@@ -5,7 +5,7 @@
 using namespace std;
 
 //Guardar datos Médicos
-void BBDD::guardarDatosMedicos(cons vector<Medico>& medicos) {
+void BBDD::guardarDatosMedicos(const vector<Medico>& medicos) {
 	ofstream archivo("medicosLVZ.csv");
 	if (!archivo.is_open()) {
 		cerr << "Error al abrir el archivo para guardar Médicos." << endl;
@@ -18,8 +18,8 @@ void BBDD::guardarDatosMedicos(cons vector<Medico>& medicos) {
 }
 
 //Cargar datos de Médicos
-void BBDD::cargarDatosMedicos(const vector<Medico>& medicos) {
-	ifstream archivo(medicosLVZ.csv);
+void BBDD::cargarDatosMedicos(vector<Medico>& medicos) {
+	ifstream archivo("medicosLVZ.csv");
 	if (!archivo.is_open()) {
 		cerr << "Error al abrir el archivo para cargar médicos." << endl;
 		return;
@@ -37,6 +37,7 @@ void BBDD::cargarDatosMedicos(const vector<Medico>& medicos) {
 		medicos.emplace_back(nombre, id, especialidad);
 	}
 	archivo.close();
+
 }
 
 // Guardar datos de pacientes
@@ -72,5 +73,5 @@ void BBDD::cargarDatosPacientes(vector<Paciente>& pacientes) {
 		int id = stoi(idStr);
 		pacientes.emplace_back(nombre, id, fechaIngreso);
 	}
-	archivo.close;
+	archivo.close();
 }
