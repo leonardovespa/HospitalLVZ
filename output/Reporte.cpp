@@ -10,7 +10,7 @@ bool fechaEnRango(const string fecha, const string fechaInicio, const string fec
 //Reporte de pacientes atendidos entre rangos de fecha
 void Reporte:: generarReportePacientesAtendidos(const vector<Paciente>& pacientes, const string& fechaInicio, const string& fechaFin) {
 	cout << "Pacientes atendidos entre " << fechaInicio << " y " << fechaFin << ":\n";
-	for (const auto& paciente : paciente) {
+	for (const auto& paciente : pacientes) {
 		if (fechaEnRango(paciente.getFechaIngreso(), fechaInicio, fechaFin)) {
 			paciente.mostrarDatos();
 		}
