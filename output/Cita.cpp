@@ -22,7 +22,7 @@ void Cita::cancelarCita() {
 }
 
 void Cita::mostrarCita() const {
-	cout << "Cita ID: " << CitaID << ", Fecha: " << fecha << ", urgencia: " << urgencia << ", Estado: " << endl;
+	cout << "cita ID: " << citaID << ", Fecha: " << fecha << ", urgencia: " << urgencia << ", Estado: " << endl;
 }
 
 bool Cita::esActiva() const {
