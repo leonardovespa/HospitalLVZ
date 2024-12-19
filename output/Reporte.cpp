@@ -1,26 +1,28 @@
-// Clase Reporte
-
-
+#include "Reporte.h"
 #include <iostream>
-#include <string>
-#include <vector>
 using namespace std;
 
-class Reporte {
-	public: 
-	// Reporte de pacientes atendidos entre rango de fechas
-	void generarReportePacientesAtendidos(vector<Paciente>& pacientes, string fechaIncio, string fechaFin) {
-		cout << "Pacientes atendidos entre " << fechaIncio << " y " << fechaFin << ":\n";
-		for (auto &paciente : pacientes) {
+//Función verificar si una fecha está dentro del rango seleccionado
+bool fechaEnRango(const string fecha, const string fechaInicio, const string fechaFin) {
+	return fecha >= fechaInicio && fecha <= fechaFin;
+}
+
+//Reporte de pacientes atendidos entre rangos de fecha
+void Reporte:: generarReportePacientesAtendidos(const vector<Paciente>& pacientes, const string fechaInicio, const string fechaFin) {
+	cout << "Pacientes atendidos entre " << fechaInicio << " y " << fechaFin << ":\n";
+	for (const auto& paciente : paciente) {
+		if (fechaEnRango(paciente.getFechaIngreso(), fechaInicio, fechaFin)) {
 			paciente.mostrarDatos();
 		}
 	}
-	
-	// Reportes de citas pendientes por médico
-	void reporteCitasPendientes(vector<Cita>& citas, int medicoID) {
-		cout << "Citas pendientes para el médico con ID " << medicoID << ":\n";
-		for (auto &cita : citas) {
+}
+
+// Reporte de citas pendientes por médico
+void Reporte::reporteCitasPendientes(const vector<Cita>& citas, int medico ID) {
+	cout << "Citas pendientes para médico con ID " << ":\n";
+	for (const auto& cita : citas) {
+		if (cita.getMedico() == medicoID && cita.esActiva()) {
 			cita.mostrarCita();
 		}
 	}
-};
+}

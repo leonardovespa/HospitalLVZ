@@ -1,69 +1,76 @@
-// Clase BBDD
-
+#include "BBDD.h"
 #include <fstream>
 #include <sstream>
-#include <vector>
-#include "Paciente.h"
-#include "Medico.h"
+#include <iostream>
+using namespace std;
 
-class BBDD {
-	public:
-	
-	// Metodos para Medicos
-	
-	void guardarDatosMedicos(const vector<Medico>& medicos){
-		ofstream arhivo("medicosLVZ.xlsx");
-		for (const auto& medico : medicos) {
-			archivo << medico.getID() << "," << medico.getNombre() << "," << medico.getEspecialidad() << "\n";
-		}
-		archivo.close();
+//Guardar datos Médicos
+void BBDD::guardarDatosMedicos(cons vector<Medico>& medicos) {
+	ofstream archivo("medicosLVZ.csv");
+	if (!archivo.is_open()) {
+		cerr << "Error al abrir el archivo para guardar Médicos." << endl;
+		return;
 	}
-	
-	// Cargar datos de médicos
-	void cargarDatosMedicos(vector<Medico>& medicos) {
-		ifstream archivo("medicosLVZ.xlsm");
-		string linea;
-		while (getline(archivo, linea)) {
-			stringstream ss(linea);
-			string idStr, nombre, especialidad;
-			
-			getline(ss, idStr, ',');
-			getline(ss, nombre, ',');
-			getline(ss, especialidad, ',');
-			
-			int id = stoi(idStr);
-			Medico medico(id, nombre, especialidad);
-			medicos.push_back(medico);
-		}
-		archivo.close();
+	for (const auto& medico : medicos) {
+		archivo << medico.getID() << "," << medico.getNombre() << "," << medico.getEspecialidad() << "\n";
 	}
-	
-	// Metodos para Pacientes
-	
-		void guardarDatosMedicos(const vector<Paciente>& pacientes){
-		ofstream archivo("PacientesLVZ.xlsm");
-		for (const auto& paciente : pacientes) {
-			archivo << paciente.getID() << "," << paciente.getNombre() << "," << paciente.getEspecialidad() << "\n";
-		}
-		archivo.close();
+	archivo.close();
+}
+
+//Cargar datos de Médicos
+void BBDD::cargarDatosMedicos(vector<Medico>& medicos) {
+	ifstream archivo(medicosLVZ.csv);
+	if (!archivo.is_open()) {
+		cerr << "Error al abrir el archivo para cargar médicos." << endl;
+		return;
 	}
-	
-	// Cargar datos de médicos
-	void cargarDatosPacientes(vector<Paciente>& pacientes) {
-		ifstream archivo("medicosLVZ.xlsx");
-		string linea;
-		while (getline(archivo, linea)) {
-			stringstream ss(linea);
-			string idStr, nombre, fechaIngreso;
-			
-			getline(ss, idStr, ',');
-			getline(ss, nombre, ',');
-			getline(ss, fechaIngreso, ',');
-			
-			int id = stoi(idStr);
-			Paciente paciente(id, nombre, fechaIngreso);
-			pacientes.push_back(medico);
-		}
-		archivo.close();
+	string linea;
+	while (getline(archivo, linea)) {
+		stringstream ss(linea);
+		string idStr, nombre, especialidad;
+
+		getline(ss, idStr, ',');
+		getline(ss, nombre, ',');
+		getline(ss, especialidad, ',');
+
+		int id = stoi(idStr);
+		medicos.emplace_back(nombre, id, especialidad);
 	}
-};
+	archivo.close();
+}
+
+// Guardar datos de pacientes
+void BBDD::guardarDatosPacientes(cns vector<Paciente>¬ pacientes) {
+	ofstream archivo("pacientesLVZ.csv");
+	if (!archivo.is_open()) {
+		cerr << "Error al abrir el archivo para guardar pacientes." << endl;
+		return;
+	}
+	for (const auto& paciente : pacientes) {
+		archivo << paciente.getID() << "," << paciente.getNombre() << "," << paciente.getFechaIngreso() << "\n";
+	}
+	archivo.close();
+}
+
+// Cargar datos de pacientes
+void BBDD::cargarDatosPacientes(vector<Paciente>& pacientes) {
+	ifstream archivo("pacientesLVZ.csv");
+	if (!archivo.is_open()) {
+		cerr << "Error al abrir el archivo para cargar pacientes." << endl;
+		return;
+	}
+
+	string linea;
+	while (getline(archivo, linea)) {
+		stringstream ss(linea);
+		string idStr, nombre, fechaIngreso;
+
+		getline(ss, idStr, ',');
+		getline(ss, nombre, ',');
+		getline(ss, fechaIngreso, ',');
+
+		int id = stoi(idStr);
+		pacientes.emplace_back(nombre, id, fechaIngreso);
+	}
+	archivo.close
+}
