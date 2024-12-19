@@ -43,7 +43,7 @@ void gestionarPacientes(vector<Paciente>& pacientes) {
             cout << "Ingrese Fecha de Ingreso (YYYY-MM-DD): ";
             cin >> fechaIngreso;
             pacientes.emplace_back(nombre, ID, fechaIngreso);
-            cout << "paciente agregado con éxito.\n";
+            cout << "paciente agregado con exito.\n";
         } else if (opcion == 2) {
             int ID;
             cout << "Ingrese el ID del paciente a eliminar: ";
