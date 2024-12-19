@@ -47,5 +47,5 @@ bool Medico::isDisponible() const {
 }
 
 void Medico::mostrarDatos() const {
-	cout << "ID: " << ID << ", Nombre: " << nombre << ", Especialidad: " << especialidad << ", Disponible: " << (disponibilidad ? "Sí" : "No") << endl;
+	cout << "ID: " << ID << ", Nombre: " << nombre << ", Especialidad: " << especialidad << ", Disponible: " << (disponibilidad ? "Si" : "No") << endl;
 }
