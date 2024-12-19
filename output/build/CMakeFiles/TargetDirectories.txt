@@ -1,3 +1,0 @@
-C:/Users/leona/OneDrive/Estudios LVZ/MSMK Univertsity/Units/02_Year/Unit20_AppliedProgramming_DesignPrinciples/AB/HospitalLVZ/output/build/CMakeFiles/HospitalLVZ.dir
-C:/Users/leona/OneDrive/Estudios LVZ/MSMK Univertsity/Units/02_Year/Unit20_AppliedProgramming_DesignPrinciples/AB/HospitalLVZ/output/build/CMakeFiles/edit_cache.dir
-C:/Users/leona/OneDrive/Estudios LVZ/MSMK Univertsity/Units/02_Year/Unit20_AppliedProgramming_DesignPrinciples/AB/HospitalLVZ/output/build/CMakeFiles/rebuild_cache.dir
