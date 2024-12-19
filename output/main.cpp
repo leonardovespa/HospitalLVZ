@@ -153,6 +153,9 @@ int main() {
     Reporte reporte;
     BBDD bbdd;
 
+    bbdd.cargarDatosPacientes(pacientes);
+    bbdd.cargarDatosMedicos(medicos);
+
     int opcion;
     do {
         mostrarMenu();
