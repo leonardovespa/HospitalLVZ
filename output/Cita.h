@@ -13,10 +13,10 @@ class Cita {
     string estado;
 
     public:
-    Cita(int citaID, int pacienteID, string fecha, string urgencia);
+    Cita(int citaID, int pacienteID, int medicoID, string fecha, string urgencia);
     void modificarCita(string nuevaFecha, string nuevaUrgencia);
     void cancelarCita();
-    void mostrarCita();
+    void mostrarCita() const;
     bool esActiva() const;
     int getCitaID() const;
     int getPacienteID() const;
