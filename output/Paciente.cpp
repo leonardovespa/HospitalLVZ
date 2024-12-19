@@ -7,7 +7,7 @@ using namespace std;
 Paciente::Paciente(string nombre, int ID, string fechaIngreso) {
 	this->nombre = nombre;
 	this->ID = ID;
-	this->fechaIngrso = fechaIngreso;
+	this->fechaIngreso = fechaIngreso;
 }
 
 void Paciente::altaPaciente(string nombre, int ID, string fechaIngreso) {
@@ -33,7 +33,7 @@ void Paciente::registrarHistorial(string entrada) {
 	historialClinico.push_back(entrada);
 }
 
-void Paciente::mostrarDatos() {
+void Paciente::mostrarDatos() const {
 	cout << "ID: " << ID << ", Nombre: " << nombre << ", Fecha de ingreso: " << fechaIngreso << endl;
 }
 
