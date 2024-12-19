@@ -19,7 +19,7 @@ class Paciente {
     void modificarDatos(string nuevoNombre, string nuevaFechaIngreso);
     bool buscarPaciente(int id);
     void registrarHistorial(string entrada);
-    void mostrarDatos();
+    void mostrarDatos() const;
     int getID() const;
     string getNombre() const;
     string getFechaIngreso() const;

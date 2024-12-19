@@ -14,7 +14,7 @@ class Cita {
 
     public:
     Cita(int citaID, int pacienteID, string fecha, string urgencia);
-    void modificarCita(String nuevaFecha, string nuevaUrgencia);
+    void modificarCita(string nuevaFecha, string nuevaUrgencia);
     void cancelarCita();
     void mostrarCita();
     bool esActiva() const;

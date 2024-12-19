@@ -4,7 +4,7 @@
 #include "Paciente.h"
 #include "Medico.h"
 
-Class BBDD {
+class BBDD {
     public:
     //Métodos para paciente
     void guardarDatosPacientes(const vector<Paciente>& pacientes);

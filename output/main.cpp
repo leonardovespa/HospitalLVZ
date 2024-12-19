@@ -5,7 +5,7 @@
 #include "Cita.h"
 #include "Reporte.h"
 #include "BBDD.h"
-#include "BBDD.h"
+#include <algorithm>
 using namespace std;
 
 void mostrarMenu() {
@@ -16,7 +16,7 @@ void mostrarMenu() {
     cout << "4. Generar Reportes\n";
     cout << "5. Guardar Datos\n";
     cout << "6. Cargar Datos\n";
-    cout << 0. "Salir\n";
+    cout << "0. Salir\n";
     cout << "Seleccione una opción: ";
 }
 
@@ -48,7 +48,7 @@ void gestionarPacientes(vector<Paciente>& pacientes) {
             int ID;
             cout << "Ingrese el ID del paciente a eliminar: ";
             cin >> ID;
-            auto it = find_if(paciente.begin(), pacientes.end(), [ID](const Paciente& p) { return p.getID() == ID; });
+            auto it = find_if(pacientes.begin(), pacientes.end(), [ID](const Paciente& p) { return p.getID() == ID; });
             if (it != pacientes.end()) {
                 pacientes.erase(it);
                 cout << "Paciente eliminado con éxito.\n";
@@ -189,5 +189,5 @@ int main() {
         }
     } while (opcion !=0);
 
-    return 0,
+    return 0;
 }

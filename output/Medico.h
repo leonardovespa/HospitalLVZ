@@ -16,7 +16,7 @@ class Medico {
     void bajaMedico();
     void asignarEspecialidad(string especialidadNueva);
     void cambiarDisponibilidad(bool estado);
-    void mostrarDatos();
+    void mostrarDatos() const;
     int getID() const;
     string getNombre() const;
     string getEspecialidad() const;
