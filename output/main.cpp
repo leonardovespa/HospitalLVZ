@@ -1,15 +1,22 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <limits>
-#include <sstream>
+#include <regex>
 #include <algorithm>
+#include <limits>
 #include "Paciente.h"
 #include "Medico.h"
 #include "Cita.h"
 #include "Reporte.h"
 #include "BBDD.h"
+
 using namespace std;
+
+// Validar formato de fecha
+bool esFechaValida(const string& fecha) {
+    const regex formatoFecha("^\\d{4}-\\d{2}-\\d{2}$"); // Formato YYYY-MM-DD
+    return regex_match(fecha, formatoFecha);
+}
 
 void mostrarMenu() {
     cout << "\n=== Sistema HospitalLVZ ===\n";
@@ -23,7 +30,7 @@ void mostrarMenu() {
     cout << "Seleccione una opcion: ";
 }
 
-void gestionarPacientes(vector<Paciente>& pacientes) {
+void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
     int opcion;
     do {
         cout << "\n--- Gestion de Pacientes ---\n";
@@ -41,12 +48,32 @@ void gestionarPacientes(vector<Paciente>& pacientes) {
             cout << "Ingrese Nombre: ";
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, nombre);
-            cout << "Ingrese ID: ";
-            cin >> ID;
+
+            bool idDuplicado;
+            do {
+                idDuplicado = false;
+                cout << "Ingrese ID: ";
+                cin >> ID;
+
+                for (const auto& paciente : pacientes) {
+                    if (paciente.getID() == ID) {
+                        idDuplicado = true;
+                        cout << "Error: El ID ingresado ya existe. Por favor, ingrese un nuevo ID.\n";
+                        break;
+                    }
+                }
+            } while (idDuplicado);
+
             cout << "Ingrese Fecha de Ingreso (YYYY-MM-DD): ";
             cin >> fechaIngreso;
+            while (!esFechaValida(fechaIngreso)) {
+                cout << "Error: Formato de fecha invalido. Por favor, ingrese una nueva fecha en formato YYYY-MM-DD: ";
+                cin >> fechaIngreso;
+            }
+
             pacientes.emplace_back(nombre, ID, fechaIngreso);
-            cout << "paciente agregado con exito.\n";
+            cout << "Paciente agregado con exito.\n";
+            bbdd.guardarDatosPacientes(pacientes); // Guardar cambios
         } else if (opcion == 2) {
             int ID;
             cout << "Ingrese el ID del paciente a eliminar: ";
@@ -55,6 +82,7 @@ void gestionarPacientes(vector<Paciente>& pacientes) {
             if (it != pacientes.end()) {
                 pacientes.erase(it);
                 cout << "Paciente eliminado con exito.\n";
+                bbdd.guardarDatosPacientes(pacientes); // Guardar cambios
             } else {
                 cout << "Paciente no encontrado.\n";
             }
@@ -70,11 +98,15 @@ void gestionarPacientes(vector<Paciente>& pacientes) {
                 getline(cin, nuevoNombre);
                 cout << "Ingrese nueva Fecha de Ingreso (YYYY-MM-DD): ";
                 cin >> nuevaFechaIngreso;
+                while (!esFechaValida(nuevaFechaIngreso)) {
+                    cout << "Error: Formato de fecha invalido. Por favor, ingrese una nueva fecha en formato YYYY-MM-DD: ";
+                    cin >> nuevaFechaIngreso;
+                }
                 it->modificarDatos(nuevoNombre, nuevaFechaIngreso);
+                bbdd.guardarDatosPacientes(pacientes); // Guardar cambios
             } else {
                 cout << "Paciente no encontrado.\n";
             }
-
         } else if (opcion == 4) {
             cout << "\n--- Lista de Pacientes ---\n";
             for (const auto& p : pacientes) {
@@ -86,10 +118,10 @@ void gestionarPacientes(vector<Paciente>& pacientes) {
     } while (opcion != 0);
 }
 
-void gestionarMedicos(vector<Medico>& medicos) {
+void gestionarMedicos(vector<Medico>& medicos, BBDD& bbdd) {
     int opcion;
     do {
-        cout << "\n--- Gestion de Medicos\n";
+        cout << "\n--- Gestion de Medicos ---\n";
         cout << "1. Alta de Medico\n";
         cout << "2. Baja de Medico\n";
         cout << "3. Modificar Especialidad\n";
@@ -104,25 +136,42 @@ void gestionarMedicos(vector<Medico>& medicos) {
             cout << "Ingrese Nombre: ";
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, nombre);
-            cout << "Ingrese ID: ";
-            cin >> ID;
+
+            bool idDuplicado;
+            do {
+                idDuplicado = false;
+                cout << "Ingrese ID: ";
+                cin >> ID;
+
+                for (const auto& medico : medicos) {
+                    if (medico.getID() == ID) {
+                        idDuplicado = true;
+                        cout << "Error: El ID ingresado ya existe. Por favor, ingrese un nuevo ID.\n";
+                        break;
+                    }
+                }
+            } while (idDuplicado);
+
             cout << "Ingrese Especialidad: ";
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, especialidad);
+
             medicos.emplace_back(nombre, ID, especialidad);
             cout << "Medico agregado con exito.\n";
+            bbdd.guardarDatosMedicos(medicos); // Guardar cambios
         } else if (opcion == 2) {
             int ID;
-            cout << "Ingrese el ID de medico a eliminar: ";
+            cout << "Ingrese el ID del medico a eliminar: ";
             cin >> ID;
             auto it = find_if(medicos.begin(), medicos.end(), [ID](const Medico& m) { return m.getID() == ID; });
             if (it != medicos.end()) {
                 medicos.erase(it);
-                cout << "Medico eliminado con exito\n";
+                cout << "Medico eliminado con exito.\n";
+                bbdd.guardarDatosMedicos(medicos); // Guardar cambios
             } else {
                 cout << "Medico no encontrado.\n";
             }
-        } else if (opcion ==3) {
+        } else if (opcion == 3) {
             int ID;
             cout << "Ingrese el ID del medico a modificar: ";
             cin >> ID;
@@ -133,27 +182,24 @@ void gestionarMedicos(vector<Medico>& medicos) {
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 getline(cin, nuevaEspecialidad);
                 it->asignarEspecialidad(nuevaEspecialidad);
+                bbdd.guardarDatosMedicos(medicos); // Guardar cambios
             } else {
                 cout << "Medico no encontrado.\n";
             }
         } else if (opcion == 4) {
-            cout << "\n--- Lista de Medicos---\n";
+            cout << "\n--- Lista de Medicos ---\n";
             for (const auto& m : medicos) {
                 m.mostrarDatos();
             }
         } else if (opcion != 0) {
             cout << "Opcion no valida. Intente de nuevo.\n";
-            }
+        }
     } while (opcion != 0);
 }
-
-// lógica para las clases Cita, Reportes y BBDD
 
 int main() {
     vector<Paciente> pacientes;
     vector<Medico> medicos;
-    vector<Cita> citas;
-    Reporte reporte;
     BBDD bbdd;
 
     bbdd.cargarDatosPacientes(pacientes);
@@ -166,42 +212,37 @@ int main() {
 
         switch (opcion) {
             case 1:
-            gestionarPacientes(pacientes);
-            break;
-
+                gestionarPacientes(pacientes, bbdd);
+                break;
             case 2:
-            gestionarMedicos(medicos);
-            break;
-
+                gestionarMedicos(medicos, bbdd);
+                break;
             case 3:
-            cout << "Funcionalidad de Reportes aun en desarrollo.\n";
-            break;
-
+                cout << "Funcionalidad de Citas aun en desarrollo.\n";
+                break;
             case 4:
-            cout << "Funcionalidad de Reportes aun en desarrollo.\n";
-            break;
-
+                cout << "Funcionalidad de Reportes aun en desarrollo.\n";
+                break;
             case 5:
-            bbdd.guardarDatosMedicos(medicos);
-            cout << "Datos guardados con exito.\n";
-            break;
-
+                bbdd.guardarDatosPacientes(pacientes);
+                bbdd.guardarDatosMedicos(medicos);
+                cout << "Datos guardados con exito.\n";
+                break;
             case 6:
-            bbdd.cargarDatosMedicos(medicos);
-            cout << "Datos cargados con exito.\n";
-            break;
-
+                bbdd.cargarDatosPacientes(pacientes);
+                bbdd.cargarDatosMedicos(medicos);
+                cout << "Datos cargados con exito.\n";
+                break;
             case 0:
-            cout << "Saliendo del sistema...\n";
-            bbdd.guardarDatosMedicos(medicos);
-            bbdd.guardarDatosPacientes(pacientes);
-            break;
-
+                cout << "Saliendo del sistema...\n";
+                bbdd.guardarDatosPacientes(pacientes);
+                bbdd.guardarDatosMedicos(medicos);
+                break;
             default:
-            cout << "Opcion no valida. Intente de nuevo.\n";
-            break;
+                cout << "Opcion no valida. Intente de nuevo.\n";
+                break;
         }
-    } while (opcion !=0);
+    } while (opcion != 0);
 
     return 0;
 }
