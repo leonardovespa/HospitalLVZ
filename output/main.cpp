@@ -1,11 +1,14 @@
 #include <iostream>
 #include <vector>
+#include <string>
+#include <limits>
+#include <sstream>
+#include <algorithm>
 #include "Paciente.h"
 #include "Medico.h"
 #include "Cita.h"
 #include "Reporte.h"
 #include "BBDD.h"
-#include <algorithm>
 using namespace std;
 
 void mostrarMenu() {
