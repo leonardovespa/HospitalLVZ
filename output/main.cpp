@@ -18,6 +18,24 @@ bool esFechaValida(const string& fecha) {
     return regex_match(fecha, formatoFecha);
 }
 
+// Validar que el ID sea un número entero válido
+int obtenerIDValido() {
+    int ID;
+    while (true) {
+        cout << "Ingrese ID: ";
+        cin >> ID;
+
+        // Verificar si la entrada fue válida
+        if (cin.fail()) {
+            cin.clear(); // Limpia el estado de error de cin
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Descarta la entrada inválida
+            cout << "Error: ID inválido. Ingrese un número entero.\n";
+        } else {
+            return ID;
+        }
+    }
+}
+
 void mostrarMenu() {
     cout << "\n=== Sistema HospitalLVZ ===\n";
     cout << "1. Gestionar Pacientes\n";
@@ -44,7 +62,6 @@ void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
 
         if (opcion == 1) {
             string nombre, fechaIngreso;
-            int ID;
             cout << "Ingrese Nombre: ";
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, nombre);
@@ -54,13 +71,12 @@ void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
             bool idDuplicado;
             do {
                 idDuplicado = false;
-                cout << "Ingrese ID: ";
-                cin >> ID;
 
                 for (const auto& paciente : pacientes) {
                     if (paciente.getID() == ID) {
                         idDuplicado = true;
                         cout << "Error: El ID ingresado ya existe. Por favor, ingrese un nuevo ID.\n";
+                        ID = obtenerIDValido();
                         break;
                     }
                 }
@@ -77,9 +93,7 @@ void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
             cout << "Paciente agregado con exito.\n";
             bbdd.guardarDatosPacientes(pacientes); // Guardar cambios
         } else if (opcion == 2) {
-            int ID;
-            cout << "Ingrese el ID del paciente a eliminar: ";
-            cin >> ID;
+            int ID = obtenerIDValido();
             auto it = find_if(pacientes.begin(), pacientes.end(), [ID](const Paciente& p) { return p.getID() == ID; });
             if (it != pacientes.end()) {
                 pacientes.erase(it);
@@ -89,9 +103,7 @@ void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
                 cout << "Paciente no encontrado.\n";
             }
         } else if (opcion == 3) {
-            int ID;
-            cout << "Ingrese el ID del paciente a modificar: ";
-            cin >> ID;
+            int ID = obtenerIDValido();
             auto it = find_if(pacientes.begin(), pacientes.end(), [ID](const Paciente& p) { return p.getID() == ID; });
             if (it != pacientes.end()) {
                 string nuevoNombre, nuevaFechaIngreso;
@@ -134,7 +146,6 @@ void gestionarMedicos(vector<Medico>& medicos, BBDD& bbdd) {
 
         if (opcion == 1) {
             string nombre, especialidad;
-            int ID;
             cout << "Ingrese Nombre: ";
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, nombre);
@@ -144,13 +155,12 @@ void gestionarMedicos(vector<Medico>& medicos, BBDD& bbdd) {
             bool idDuplicado;
             do {
                 idDuplicado = false;
-                cout << "Ingrese ID: ";
-                cin >> ID;
 
                 for (const auto& medico : medicos) {
                     if (medico.getID() == ID) {
                         idDuplicado = true;
                         cout << "Error: El ID ingresado ya existe. Por favor, ingrese un nuevo ID.\n";
+                        ID = obtenerIDValido();
                         break;
                     }
                 }
@@ -164,9 +174,7 @@ void gestionarMedicos(vector<Medico>& medicos, BBDD& bbdd) {
             cout << "Medico agregado con exito.\n";
             bbdd.guardarDatosMedicos(medicos); // Guardar cambios
         } else if (opcion == 2) {
-            int ID;
-            cout << "Ingrese el ID del medico a eliminar: ";
-            cin >> ID;
+            int ID = obtenerIDValido();
             auto it = find_if(medicos.begin(), medicos.end(), [ID](const Medico& m) { return m.getID() == ID; });
             if (it != medicos.end()) {
                 medicos.erase(it);
@@ -176,9 +184,7 @@ void gestionarMedicos(vector<Medico>& medicos, BBDD& bbdd) {
                 cout << "Medico no encontrado.\n";
             }
         } else if (opcion == 3) {
-            int ID;
-            cout << "Ingrese el ID del medico a modificar: ";
-            cin >> ID;
+            int ID = obtenerIDValido();
             auto it = find_if(medicos.begin(), medicos.end(), [ID](const Medico& m) { return m.getID() == ID; });
             if (it != medicos.end()) {
                 string nuevaEspecialidad;
