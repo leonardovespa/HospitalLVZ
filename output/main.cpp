@@ -49,6 +49,8 @@ void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, nombre);
 
+            int ID = obtenerIDValido();
+
             bool idDuplicado;
             do {
                 idDuplicado = false;
@@ -136,6 +138,8 @@ void gestionarMedicos(vector<Medico>& medicos, BBDD& bbdd) {
             cout << "Ingrese Nombre: ";
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, nombre);
+
+            int ID = obtenerIDValido();
 
             bool idDuplicado;
             do {
