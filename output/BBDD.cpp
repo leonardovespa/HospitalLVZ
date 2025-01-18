@@ -94,6 +94,7 @@ void BBDD::guardarDatosCitas(const vector<Cita>& citas) {
 }
 
 // Cargar datos de citas
+
 void BBDD::cargarDatosCitas(vector<Cita>& citas) {
     ifstream archivo("citasLVZ.csv");
     if (!archivo.is_open()) {
@@ -104,12 +105,13 @@ void BBDD::cargarDatosCitas(vector<Cita>& citas) {
     string linea;
     while (getline(archivo, linea)) {
         stringstream ss(linea);
-        string citaIDStr, pacienteIDStr, medicoIDStr, fecha, estado, urgencia;
+        string citaIDStr, pacienteIDStr, medicoIDStr, fecha, especialidad, estado, urgencia;
 
         getline(ss, citaIDStr, ',');
         getline(ss, pacienteIDStr, ',');
         getline(ss, medicoIDStr, ',');
         getline(ss, fecha, ',');
+        getline(ss, especialidad, ',');
         getline(ss, estado, ',');
         getline(ss, urgencia, ',');
 
@@ -117,7 +119,10 @@ void BBDD::cargarDatosCitas(vector<Cita>& citas) {
         int pacienteID = stoi(pacienteIDStr);
         int medicoID = stoi(medicoIDStr);
 
-        citas.emplace_back(citaID, pacienteID, medicoID, fecha, urgencia);
+        // Crear objeto Cita con 6 argumentos
+        citas.emplace_back(citaID, pacienteID, medicoID, fecha, especialidad, urgencia);
+
+        // Ajustar el estado de la cita si está cancelada
         if (estado == "cancelada") {
             citas.back().cancelarCita();
         }
