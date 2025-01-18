@@ -11,7 +11,7 @@ class Medico {
     bool disponibilidad;
 
     public:
-    Medico(string nombre, int ID, string especialidad);
+    Medico(string nombre, int ID, string especialidad); // constructor
     void altaMedico(string nombre, int ID, string especialidad);
     void bajaMedico();
     void asignarEspecialidad(string especialidadNueva);
@@ -21,6 +21,8 @@ class Medico {
     string getNombre() const;
     string getEspecialidad() const;
     bool isDisponible() const;
+
+    void setDisponibilidad(bool estado);
 };
 
 #endif
