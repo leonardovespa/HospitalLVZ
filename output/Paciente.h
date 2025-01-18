@@ -2,24 +2,23 @@
 #define PACIENTE_H
 
 #include <string>
-#include <vector>
 using namespace std;
 
 class Paciente {
-    private:
+private:
     string nombre;
     int ID;
     string fechaIngreso;
-    vector<string> historialClinico;
+    bool cronico; // Indica si el paciente tiene una enfermedad crónica
 
-    public:
-    Paciente(string nombre, int ID, string fechaIngreso);
-    void altaPaciente(string nombre, int ID, string fechaIngreso);
-    void bajaPaciente();
+public:
+    Paciente(string nombre, int ID, string fechaIngreso, bool cronico = false);
+
     void modificarDatos(string nuevoNombre, string nuevaFechaIngreso);
-    bool buscarPaciente(int id);
-    void registrarHistorial(string entrada);
     void mostrarDatos() const;
+    bool esCronico() const; // Método para verificar si es crónico
+
+    // Getters
     int getID() const;
     string getNombre() const;
     string getFechaIngreso() const;
