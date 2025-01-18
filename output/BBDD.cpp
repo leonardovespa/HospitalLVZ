@@ -7,7 +7,7 @@ using namespace std;
 
 // Guardar datos de Médicos
 void BBDD::guardarDatosMedicos(const vector<Medico>& medicos) {
-    ofstream archivo("C:\Users\leona\OneDrive\Estudios LVZ\MSMK Univertsity\Units\02_Year\Unit20_AppliedProgramming_DesignPrinciples\AB\HospitalLVZ\output\medicosLVZ.csv");
+    ofstream archivo("C:/Users/leona/OneDrive/Estudios LVZ/MSMK Univertsity/Units/02_Year/Unit20_AppliedProgramming_DesignPrinciples/AB/HospitalLVZ/output/medicosLVZ.csv");
     if (!archivo.is_open()) {
         cerr << "Error al abrir el archivo para guardar Medicos." << endl;
         return;
@@ -20,7 +20,7 @@ void BBDD::guardarDatosMedicos(const vector<Medico>& medicos) {
 
 // Cargar datos de Médicos
 void BBDD::cargarDatosMedicos(vector<Medico>& medicos) {
-    ifstream archivo("C:\Users\leona\OneDrive\Estudios LVZ\MSMK Univertsity\Units\02_Year\Unit20_AppliedProgramming_DesignPrinciples\AB\HospitalLVZ\output\medicosLVZ.csv");
+    ifstream archivo("C:/Users/leona/OneDrive/Estudios LVZ/MSMK Univertsity/Units/02_Year/Unit20_AppliedProgramming_DesignPrinciples/AB/HospitalLVZ/output/medicosLVZ.csv");
     if (!archivo.is_open()) {
         cerr << "Error al abrir el archivo para cargar medicos." << endl;
         return;
@@ -45,7 +45,7 @@ void BBDD::cargarDatosMedicos(vector<Medico>& medicos) {
 
 // Guardar datos de pacientes
 void BBDD::guardarDatosPacientes(const vector<Paciente>& pacientes) {
-    ofstream archivo("C:\Users\leona\OneDrive\Estudios LVZ\MSMK Univertsity\Units\02_Year\Unit20_AppliedProgramming_DesignPrinciples\AB\HospitalLVZ\output\pacientesLVZ.csv");
+    ofstream archivo("C:/Users/leona/OneDrive/Estudios LVZ/MSMK Univertsity/Units/02_Year/Unit20_AppliedProgramming_DesignPrinciples/AB/HospitalLVZ/output/pacientesLVZ.csv");
     if (!archivo.is_open()) {
         cerr << "Error al abrir el archivo para guardar pacientes." << endl;
         return;
@@ -58,7 +58,7 @@ void BBDD::guardarDatosPacientes(const vector<Paciente>& pacientes) {
 
 // Cargar datos de pacientes
 void BBDD::cargarDatosPacientes(vector<Paciente>& pacientes) {
-    ifstream archivo("C:\Users\leona\OneDrive\Estudios LVZ\MSMK Univertsity\Units\02_Year\Unit20_AppliedProgramming_DesignPrinciples\AB\HospitalLVZ\output\pacientesLVZ.csv");
+    ifstream archivo("C:/Users/leona/OneDrive/Estudios LVZ/MSMK Univertsity/Units/02_Year/Unit20_AppliedProgramming_DesignPrinciples/AB/HospitalLVZ/output/pacientesLVZ.csv");
     if (!archivo.is_open()) {
         cerr << "Error al abrir el archivo para cargar pacientes." << endl;
         return;
@@ -81,7 +81,7 @@ void BBDD::cargarDatosPacientes(vector<Paciente>& pacientes) {
 
 // Guardar datos de citas
 void BBDD::guardarDatosCitas(const vector<Cita>& citas) {
-    ofstream archivo("C:\Users\leona\OneDrive\Estudios LVZ\MSMK Univertsity\Units\02_Year\Unit20_AppliedProgramming_DesignPrinciples\AB\HospitalLVZ\output\citasLVZ.csv");
+    ofstream archivo("C:/Users/leona/OneDrive/Estudios LVZ/MSMK Univertsity/Units/02_Year/Unit20_AppliedProgramming_DesignPrinciples/AB/HospitalLVZ/output/citasLVZ.csv");
     if (!archivo.is_open()) {
         cerr << "Error al abrir el archivo para guardar citas." << endl;
         return;
@@ -95,7 +95,7 @@ void BBDD::guardarDatosCitas(const vector<Cita>& citas) {
 
 // Cargar datos de citas
 void BBDD::cargarDatosCitas(vector<Cita>& citas) {
-    ifstream archivo("C:\Users\leona\OneDrive\Estudios LVZ\MSMK Univertsity\Units\02_Year\Unit20_AppliedProgramming_DesignPrinciples\AB\HospitalLVZ\output\citasLVZ.csv");
+    ifstream archivo("C:/Users/leona/OneDrive/Estudios LVZ/MSMK Univertsity/Units/02_Year/Unit20_AppliedProgramming_DesignPrinciples/AB/HospitalLVZ/output/citasLVZ.csv");
     if (!archivo.is_open()) {
         cerr << "Error al abrir el archivo para cargar citas." << endl;
         return;
