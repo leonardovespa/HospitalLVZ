@@ -191,9 +191,17 @@ int main() {
                 break;
             case 6:
                 bbdd.cargarDatosPacientes(pacientes);
+                cout << "Datos de pacientes actualizados." << endl;
+
                 bbdd.cargarDatosMedicos(medicos);
-                cout << "Datos cargados con exito.\n";
-                break;
+                cout << "Disponibilidad de medicos actualizada." << endl;
+
+                bbdd.cargarDatosCitas(citas);
+                cout << "Citas actualizadas." << endl;
+
+                cout << "Datos cargados con exito." << endl;
+    break;
+
             case 0:
                 cout << "Saliendo del sistema...\n";
                 bbdd.guardarDatosPacientes(pacientes);
