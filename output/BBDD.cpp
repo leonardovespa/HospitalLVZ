@@ -88,13 +88,12 @@ void BBDD::guardarDatosCitas(const vector<Cita>& citas) {
     }
     for (const auto& cita : citas) {
         archivo << cita.getCitaID() << "," << cita.getPacienteID() << "," << cita.getMedicoID() << ","
-                << cita.getFecha() << "," << cita.getEstado() << "," << cita.getUrgencia() << "\n";
+                << cita.getFecha() << "," << cita.getEspecialidad() << "," << cita.getEstado() << "," << cita.getUrgencia() << "\n";
     }
     archivo.close();
 }
 
 // Cargar datos de citas
-
 void BBDD::cargarDatosCitas(vector<Cita>& citas) {
     ifstream archivo("citasLVZ.csv");
     if (!archivo.is_open()) {
