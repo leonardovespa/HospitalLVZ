@@ -313,6 +313,40 @@ void gestionarCitas(vector<Cita>& citas, vector<Paciente>& pacientes, vector<Med
     } while (opcion != 0);
 }
 
+// Generar reportes
+void generarReportes(vector<Paciente>& pacientes, vector<Cita>& citas, vector<Medico>& medicos) {
+    Reporte reporte;
+    int opcion;
+    do {
+        cout << "\n--- Generar Reportes ---\n";
+        cout << "1. Listado de pacientes atendidos en un rango de fechas\n";
+        cout << "2. Citas pendientes por médico o especialidad\n";
+        cout << "3. Reporte de pacientes con enfermedades crónicas\n";
+        cout << "0. Volver al menú principal\n";
+        cout << "Seleccione una opción: ";
+        cin >> opcion;
+
+        if (opcion == 1) {
+            string fechaInicio, fechaFin;
+            cout << "Ingrese la fecha de inicio (YYYY-MM-DD): ";
+            cin >> fechaInicio;
+            cout << "Ingrese la fecha de fin (YYYY-MM-DD): ";
+            cin >> fechaFin;
+            reporte.generarReportePacientesAtendidos(pacientes, fechaInicio, fechaFin);
+        } else if (opcion == 2) {
+            string criterio;
+            cout << "Ingrese el ID del médico o la especialidad: ";
+            cin.ignore();
+            getline(cin, criterio);
+            reporte.reporteCitasPendientes(citas, medicos, criterio);
+        } else if (opcion == 3) {
+            reporte.reportePacientesCronicos(pacientes);
+        } else if (opcion != 0) {
+            cout << "Opción no válida. Intente nuevamente.\n";
+        }
+    } while (opcion != 0);
+}
+
 
 // Función principal
 int main() {
@@ -341,8 +375,9 @@ int main() {
                 gestionarCitas(citas, pacientes, medicos, bbdd);
                 break;
             case 4:
-                cout << "Funcionalidad de Reportes aun en desarrollo.\n";
+                generarReportes(pacientes, citas, medicos);
                 break;
+
             case 5:
                 bbdd.guardarDatosPacientes(pacientes);
                 bbdd.guardarDatosMedicos(medicos);
