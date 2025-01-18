@@ -5,9 +5,12 @@
 #include <iostream>
 using namespace std;
 
+// Ruta base para los archivos CSV
+const string BASE_PATH = "C:\\Users\\leona\\OneDrive\\Estudios LVZ\\MSMK Univertsity\\Units\\02_Year\\Unit20_AppliedProgramming_DesignPrinciples\\AB\\HospitalLVZ\\output\\";
+
 // Guardar datos de Médicos
 void BBDD::guardarDatosMedicos(const vector<Medico>& medicos) {
-    ofstream archivo("medicosLVZ.csv");
+    ofstream archivo(BASE_PATH + "medicosLVZ.csv");
     if (!archivo.is_open()) {
         cerr << "Error al abrir el archivo para guardar Medicos." << endl;
         return;
@@ -20,9 +23,9 @@ void BBDD::guardarDatosMedicos(const vector<Medico>& medicos) {
 
 // Cargar datos de Médicos
 void BBDD::cargarDatosMedicos(vector<Medico>& medicos) {
-    ifstream archivo("medicosLVZ.csv");
+    ifstream archivo(BASE_PATH + "medicosLVZ.csv");
     if (!archivo.is_open()) {
-        cerr << "Error al abrir el archivo para cargar medicos." << endl;
+        cerr << "Error al abrir el archivo para cargar Medicos." << endl;
         return;
     }
     string linea;
@@ -43,11 +46,11 @@ void BBDD::cargarDatosMedicos(vector<Medico>& medicos) {
     archivo.close();
 }
 
-// Guardar datos de pacientes
+// Guardar datos de Pacientes
 void BBDD::guardarDatosPacientes(const vector<Paciente>& pacientes) {
-    ofstream archivo("pacientesLVZ.csv");
+    ofstream archivo(BASE_PATH + "pacientesLVZ.csv");
     if (!archivo.is_open()) {
-        cerr << "Error al abrir el archivo para guardar pacientes." << endl;
+        cerr << "Error al abrir el archivo para guardar Pacientes." << endl;
         return;
     }
     for (const auto& paciente : pacientes) {
@@ -56,14 +59,13 @@ void BBDD::guardarDatosPacientes(const vector<Paciente>& pacientes) {
     archivo.close();
 }
 
-// Cargar datos de pacientes
+// Cargar datos de Pacientes
 void BBDD::cargarDatosPacientes(vector<Paciente>& pacientes) {
-    ifstream archivo("pacientesLVZ.csv");
+    ifstream archivo(BASE_PATH + "pacientesLVZ.csv");
     if (!archivo.is_open()) {
-        cerr << "Error al abrir el archivo para cargar pacientes." << endl;
+        cerr << "Error al abrir el archivo para cargar Pacientes." << endl;
         return;
     }
-
     string linea;
     while (getline(archivo, linea)) {
         stringstream ss(linea);
@@ -79,11 +81,11 @@ void BBDD::cargarDatosPacientes(vector<Paciente>& pacientes) {
     archivo.close();
 }
 
-// Guardar datos de citas
+// Guardar datos de Citas
 void BBDD::guardarDatosCitas(const vector<Cita>& citas) {
-    ofstream archivo("citasLVZ.csv");
+    ofstream archivo(BASE_PATH + "citasLVZ.csv");
     if (!archivo.is_open()) {
-        cerr << "Error al abrir el archivo para guardar citas." << endl;
+        cerr << "Error al abrir el archivo para guardar Citas." << endl;
         return;
     }
     for (const auto& cita : citas) {
@@ -93,14 +95,13 @@ void BBDD::guardarDatosCitas(const vector<Cita>& citas) {
     archivo.close();
 }
 
-// Cargar datos de citas
+// Cargar datos de Citas
 void BBDD::cargarDatosCitas(vector<Cita>& citas) {
-    ifstream archivo("citasLVZ.csv");
+    ifstream archivo(BASE_PATH + "citasLVZ.csv");
     if (!archivo.is_open()) {
-        cerr << "Error al abrir el archivo para cargar citas." << endl;
+        cerr << "Error al abrir el archivo para cargar Citas." << endl;
         return;
     }
-
     string linea;
     while (getline(archivo, linea)) {
         stringstream ss(linea);
@@ -118,10 +119,8 @@ void BBDD::cargarDatosCitas(vector<Cita>& citas) {
         int pacienteID = stoi(pacienteIDStr);
         int medicoID = stoi(medicoIDStr);
 
-        // Crear objeto Cita con 6 argumentos
         citas.emplace_back(citaID, pacienteID, medicoID, fecha, especialidad, urgencia);
 
-        // Ajustar el estado de la cita si está cancelada
         if (estado == "cancelada") {
             citas.back().cancelarCita();
         }
