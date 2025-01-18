@@ -113,13 +113,13 @@ CMakeFiles/HospitalLVZ.dir/Reporte.cpp.obj: \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/cerrno \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/charconv.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/basic_string.tcc \
+ C:\Users\leona\OneDrive\Estudios\ LVZ\MSMK\ Univertsity\Units\02_Year\Unit20_AppliedProgramming_DesignPrinciples\AB\HospitalLVZ\output\Cita.h \
+ C:\Users\leona\OneDrive\Estudios\ LVZ\MSMK\ Univertsity\Units\02_Year\Unit20_AppliedProgramming_DesignPrinciples\AB\HospitalLVZ\output\Medico.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/vector \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/stl_uninitialized.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/stl_vector.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/stl_bvector.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/vector.tcc \
- C:\Users\leona\OneDrive\Estudios\ LVZ\MSMK\ Univertsity\Units\02_Year\Unit20_AppliedProgramming_DesignPrinciples\AB\HospitalLVZ\output\Cita.h \
- C:\Users\leona\OneDrive\Estudios\ LVZ\MSMK\ Univertsity\Units\02_Year\Unit20_AppliedProgramming_DesignPrinciples\AB\HospitalLVZ\output\Medico.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/iostream \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/ostream \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/ios \
@@ -142,31 +142,4 @@ CMakeFiles/HospitalLVZ.dir/Reporte.cpp.obj: \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/basic_ios.tcc \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/ostream.tcc \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/istream \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/istream.tcc \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/algorithm \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/utility \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/stl_relops.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/stl_algo.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/algorithmfwd.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/stl_heap.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/stl_tempbuf.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/uniform_int_dist.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/limits \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/pstl/glue_algorithm_defs.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/functional \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/tuple \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/array \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/uses_allocator.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/invoke.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/refwrap.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/std_function.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/unordered_map \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/ext/aligned_buffer.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/hashtable.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/hashtable_policy.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/node_handle.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/optional \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/enable_special_members.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/unordered_map.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/erase_if.h \
- C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/pstl/execution_defs.h
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/istream.tcc
