@@ -13,6 +13,11 @@ class BBDD {
     //Métodos para Médico
     void guardarDatosMedicos(const vector<Medico>& medicos);
     void cargarDatosMedicos(vector<Medico>& medicos);
+
+    // Métodos para Cita
+    void guardarDatosCitas(const vector<Cita>& citas);
+    void cargarDatosCitas(vector<Cita>& citas);
+
 };
 
 #endif
