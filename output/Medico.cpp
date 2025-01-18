@@ -4,6 +4,8 @@
 #include <iostream>
 using namespace std;
 
+// Constructor
+
 Medico::Medico(string nombre, int ID, string especialidad) {
 	this->nombre = nombre;
 	this->ID = ID;
@@ -27,7 +29,12 @@ void Medico::asignarEspecialidad(string especialidadNueva) {
 }
 
 void Medico::cambiarDisponibilidad(bool estado) {
-	cout << "ID: " << ID << ", Nombre: " << nombre << ", Especialidad: " << especialidad << ", Disponible: " << (disponibilidad ? "Si" : "No") << endl;
+	disponibilidad = estado;
+    cout << "Disponibilidad del medico actualizada. Estado actual: " << (disponibilidad ? "Disponible" : "No disponible") << endl;
+}
+
+void Medico::setDisponibilidad(bool estado) {
+	disponibilidad = estado;
 }
 
 int Medico::getID() const {
