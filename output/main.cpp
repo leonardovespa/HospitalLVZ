@@ -322,35 +322,50 @@ void gestionarCitas(vector<Cita>& citas, vector<Paciente>& pacientes, vector<Med
 // Generar reportes
 void generarReportes(vector<Paciente>& pacientes, vector<Cita>& citas, vector<Medico>& medicos) {
     Reporte reporte;
-    int opcion;
+    int opcionReporte;
     do {
-        cout << "\n--- Generar Reportes ---\n";
+        cout << "\n--- Generación de Reportes ---\n";
         cout << "1. Listado de pacientes atendidos en un rango de fechas\n";
         cout << "2. Citas pendientes por médico o especialidad\n";
         cout << "3. Reporte de pacientes con enfermedades crónicas\n";
         cout << "0. Volver al menú principal\n";
         cout << "Seleccione una opción: ";
-        cin >> opcion;
+        cin >> opcionReporte;
 
-        if (opcion == 1) {
+        if (opcionReporte == 1) {
             string fechaInicio, fechaFin;
             cout << "Ingrese la fecha de inicio (YYYY-MM-DD): ";
             cin >> fechaInicio;
             cout << "Ingrese la fecha de fin (YYYY-MM-DD): ";
             cin >> fechaFin;
             reporte.generarReportePacientesAtendidos(pacientes, fechaInicio, fechaFin);
-        } else if (opcion == 2) {
-            string criterio;
-            cout << "Ingrese el ID del médico o la especialidad: ";
-            cin.ignore();
-            getline(cin, criterio);
-            reporte.reporteCitasPendientes(citas, medicos, criterio);
-        } else if (opcion == 3) {
+        } else if (opcionReporte == 2) {
+            int criterioOpcion;
+            cout << "Seleccione el criterio:\n";
+            cout << "1. Por ID de médico\n";
+            cout << "2. Por especialidad\n";
+            cin >> criterioOpcion;
+
+            if (criterioOpcion == 1) {
+                int medicoID;
+                cout << "Ingrese el ID del médico: ";
+                cin >> medicoID;
+                reporte.reporteCitasPendientes(citas, medicos, medicoID);
+            } else if (criterioOpcion == 2) {
+                string especialidad;
+                cout << "Ingrese la especialidad: ";
+                cin.ignore(); // Limpiar el buffer
+                getline(cin, especialidad);
+                reporte.reporteCitasPendientes(citas, medicos, -1, especialidad);
+            } else {
+                cout << "Opción no válida. Intente de nuevo.\n";
+            }
+        } else if (opcionReporte == 3) {
             reporte.reportePacientesCronicos(pacientes);
-        } else if (opcion != 0) {
-            cout << "Opción no válida. Intente nuevamente.\n";
+        } else if (opcionReporte != 0) {
+            cout << "Opción no válida. Intente de nuevo.\n";
         }
-    } while (opcion != 0);
+    } while (opcionReporte != 0);
 }
 
 
