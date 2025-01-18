@@ -3,6 +3,7 @@
 #include <vector>
 #include "Paciente.h"
 #include "Medico.h"
+#include "Cita.h"
 
 class BBDD {
     public:
