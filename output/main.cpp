@@ -76,7 +76,13 @@ void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
                 cin >> fechaIngreso;
             }
 
-            pacientes.emplace_back(nombre, ID, fechaIngreso);
+            // Aquí se agrega la sección para marcar al paciente como crónico
+            cout << "¿El paciente tiene una enfermedad crónica? (1: Sí, 0: No): ";
+            int cronicoFlag;
+            cin >> cronicoFlag;
+            bool cronico = (cronicoFlag == 1);
+
+            pacientes.emplace_back(nombre, ID, fechaIngreso, cronico); // Se incluye el parámetro `cronico`
             cout << "Paciente agregado con éxito.\n";
             bbdd.guardarDatosPacientes(pacientes); // Guardar en archivo
         } else if (opcion == 2) { // Baja de paciente

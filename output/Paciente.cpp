@@ -1,50 +1,41 @@
 // Clase Paciente
-
 #include "Paciente.h"
 #include <iostream>
 using namespace std;
 
-Paciente::Paciente(string nombre, int ID, string fechaIngreso) {
-	this->nombre = nombre;
-	this->ID = ID;
-	this->fechaIngreso = fechaIngreso;
-}
+// Constructor actualizado
+Paciente::Paciente(string nombre, int ID, string fechaIngreso, bool cronico)
+    : nombre(nombre), ID(ID), fechaIngreso(fechaIngreso), cronico(cronico) {}
 
-void Paciente::altaPaciente(string nombre, int ID, string fechaIngreso) {
-	this->nombre = nombre;
-	this->ID = ID;
-	this->fechaIngreso = fechaIngreso;
-	cout << "Paciente " << nombre << " dado de alta con exito." << endl;
-}
-
-void Paciente::bajaPaciente() {
-	cout << "Paciente " << nombre << " dado de baja con exito." << endl;
-}
-
+// Modificar datos del paciente
 void Paciente::modificarDatos(string nuevoNombre, string nuevaFechaIngreso) {
-
+    nombre = nuevoNombre;
+    fechaIngreso = nuevaFechaIngreso;
 }
 
-bool Paciente::buscarPaciente(int id) {
-	return this->ID == id;
-}
-
-void Paciente::registrarHistorial(string entrada) {
-	historialClinico.push_back(entrada);
-}
-
+// Mostrar datos del paciente
 void Paciente::mostrarDatos() const {
-	cout << "ID: " << ID << ", Nombre: " << nombre << ", Fecha de ingreso: " << fechaIngreso << endl;
+    cout << "ID: " << ID << ", Nombre: " << nombre << ", Fecha de ingreso: " << fechaIngreso;
+    if (cronico) {
+        cout << " (Enfermedad Crónica)";
+    }
+    cout << endl;
 }
 
+// Verificar si el paciente es crónico
+bool Paciente::esCronico() const {
+    return cronico;
+}
+
+// Getters
 int Paciente::getID() const {
-	return ID;
+    return ID;
 }
 
 string Paciente::getNombre() const {
-	return nombre;
+    return nombre;
 }
 
 string Paciente::getFechaIngreso() const {
-	return fechaIngreso;
+    return fechaIngreso;
 }
