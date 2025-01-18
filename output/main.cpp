@@ -213,7 +213,11 @@ void gestionarCitas(vector<Cita>& citas, vector<Paciente>& pacientes, vector<Med
             int pacienteID, medicoID;
             string fecha, urgencia;
 
-            // Buscar paciente
+            // Mostrar lista de pacientes y solicitar ID
+            cout << "\n--- Lista de Pacientes ---\n";
+            for (const auto& p : pacientes) {
+                p.mostrarDatos();
+            }
             cout << "Ingrese el ID del paciente: ";
             pacienteID = obtenerIDValido();
             auto pacienteIt = find_if(pacientes.begin(), pacientes.end(), [pacienteID](const Paciente& p) {
@@ -225,7 +229,11 @@ void gestionarCitas(vector<Cita>& citas, vector<Paciente>& pacientes, vector<Med
                 continue;
             }
 
-            // Buscar médico
+            // Mostrar lista de médicos y solicitar ID
+            cout << "\n--- Lista de Medicos ---\n";
+            for (const auto& m : medicos) {
+                m.mostrarDatos();
+            }
             cout << "Ingrese el ID del médico: ";
             medicoID = obtenerIDValido();
             auto medicoIt = find_if(medicos.begin(), medicos.end(), [medicoID](const Medico& m) {
@@ -233,16 +241,16 @@ void gestionarCitas(vector<Cita>& citas, vector<Paciente>& pacientes, vector<Med
             });
 
             if (medicoIt == medicos.end()) {
-                cout << "Error: Medico no encontrado.\n";
+                cout << "Error: Médico no encontrado.\n";
                 continue;
             }
 
             if (!medicoIt->isDisponible()) {
-                cout << "El medico no está disponible.\n";
+                cout << "El médico no está disponible.\n";
                 continue;
             }
 
-            // Ingresar fecha de la cita
+            // Solicitar fecha y urgencia
             cout << "Ingrese la fecha de la cita (YYYY-MM-DD): ";
             cin >> fecha;
             while (!esFechaValida(fecha)) {
@@ -250,18 +258,17 @@ void gestionarCitas(vector<Cita>& citas, vector<Paciente>& pacientes, vector<Med
                 cin >> fecha;
             }
 
-            // Ingresar urgencia
             cout << "Ingrese el nivel de urgencia (Alta/Media/Baja): ";
             cin.ignore();
             getline(cin, urgencia);
 
-            // Crear y agregar la cita
+            // Crear y guardar la cita
             int citaID = citas.empty() ? 1 : citas.back().getCitaID() + 1;
             citas.emplace_back(citaID, pacienteID, medicoID, fecha, medicoIt->getEspecialidad(), urgencia);
-            medicoIt->cambiarDisponibilidad(false); // Marcar al médico como no disponible
+            medicoIt->cambiarDisponibilidad(false);
             cout << "Cita asignada con éxito.\n";
 
-            // Guardar las citas en el archivo
+            // Guardar citas en archivo
             bbdd.guardarDatosCitas(citas);
 
         } else if (opcion == 2) { // Cancelar Cita
@@ -279,12 +286,12 @@ void gestionarCitas(vector<Cita>& citas, vector<Paciente>& pacientes, vector<Med
                 });
 
                 if (medicoIt != medicos.end()) {
-                    medicoIt->cambiarDisponibilidad(true); // Marcar al médico como disponible
+                    medicoIt->cambiarDisponibilidad(true);
                 }
                 citaIt->cancelarCita();
                 cout << "Cita cancelada con éxito.\n";
 
-                // Guardar las citas actualizadas en el archivo
+                // Guardar citas actualizadas en archivo
                 bbdd.guardarDatosCitas(citas);
             } else {
                 cout << "Cita no encontrada.\n";
