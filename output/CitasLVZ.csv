@@ -1,4 +1,0 @@
-CitaID,PacienteID,MedicoID,Fecha,Especialidad,Estado,Urgencia
-1,101,201,2025-02-01,Pediatría,activa,Alta
-2,102,202,2025-02-02,Cardiología,activa,Media
-3,103,203,2025-02-03,Dermatología,activa,Baja
