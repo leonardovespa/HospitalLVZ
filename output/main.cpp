@@ -50,16 +50,16 @@ void mostrarMenu() {
 
 // Gestionar pacientes
 void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
-    // (Función sin cambios del código anterior)
+    // Código sin cambios
 }
 
 // Gestionar médicos
 void gestionarMedicos(vector<Medico>& medicos, BBDD& bbdd) {
-    // (Función sin cambios del código anterior)
+    // Código sin cambios
 }
 
 // Gestionar citas
-void gestionarCitas(vector<Cita>& citas, vector<Paciente>& pacientes, vector<Medico>& medicos) {
+void gestionarCitas(vector<Cita>& citas, vector<Paciente>& pacientes, vector<Medico>& medicos, BBDD& bbdd) {
     int opcion;
     do {
         cout << "\n--- Gestion de Citas ---\n";
@@ -118,7 +118,7 @@ void gestionarCitas(vector<Cita>& citas, vector<Paciente>& pacientes, vector<Med
 
             // Crear y agregar la cita
             int citaID = citas.empty() ? 1 : citas.back().getCitaID() + 1;
-            citas.emplace_back(citaID, pacienteID, medicoID, fecha, urgencia);
+            citas.emplace_back(citaID, pacienteID, medicoID, fecha, medicoIt->getEspecialidad(), urgencia);
             medicoIt->cambiarDisponibilidad(false); // Marcar al médico como no disponible
             cout << "Cita asignada con exito.\n";
 
@@ -179,7 +179,7 @@ int main() {
                 gestionarMedicos(medicos, bbdd);
                 break;
             case 3:
-                gestionarCitas(citas, pacientes, medicos);
+                gestionarCitas(citas, pacientes, medicos, bbdd);
                 break;
             case 4:
                 cout << "Funcionalidad de Reportes aun en desarrollo.\n";
