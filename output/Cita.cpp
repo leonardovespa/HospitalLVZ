@@ -2,11 +2,12 @@
 #include <iostream>
 using namespace std;
 
-Cita::Cita(int citaID, int pacienteID, int medicoID, string fecha, string urgencia) {
+Cita::Cita(int citaID, int pacienteID, int medicoID, const string& fecha, const string& especialidad, const string& urgencia) {
 	this->citaID = citaID;
 	this->pacienteID = pacienteID;
 	this->medicoID = medicoID;
 	this->fecha = fecha;
+	this->especialidad = especialidad;
 	this->urgencia = urgencia;
 	this->estado = "activa";
 }
@@ -22,7 +23,13 @@ void Cita::cancelarCita() {
 }
 
 void Cita::mostrarCita() const {
-	cout << "cita ID: " << citaID << ", Fecha: " << fecha << ", urgencia: " << urgencia << ", Estado: " << endl;
+	cout << "Cita ID: " << citaID
+         << ", Paciente ID: " << pacienteID
+		 << ", Medico ID: " << medicoID
+		 << ", Fecha: " << fecha
+		 << ", especialidad: " << especialidad
+		 << ", Urgencia: " << urgencia
+		 << ", Estado: " << estado << endl;	
 }
 
 bool Cita::esActiva() const {
@@ -39,6 +46,18 @@ int Cita::getPacienteID() const {
 
 int Cita::getMedicoID() const {
 	return medicoID;
+}
+
+string Cita::getFecha() const {
+	return fecha;
+}
+
+string Cita::getEspecialidad() const {
+	return especialidad;
+}
+
+string Cita::getUrgencia() const {
+	return urgencia;
 }
 
 string Cita::getEstado() const {
