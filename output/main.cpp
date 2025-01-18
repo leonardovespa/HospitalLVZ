@@ -78,7 +78,7 @@ void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
 
             pacientes.emplace_back(nombre, ID, fechaIngreso);
             cout << "Paciente agregado con éxito.\n";
-            bbdd.guardarDatosPacientes(pacientes); // Guardar en archivo
+            bbdd.guardarDatosPacientes(pacientes);
         } else if (opcion == 2) { // Baja de paciente
             int ID = obtenerIDValido();
             auto it = find_if(pacientes.begin(), pacientes.end(), [ID](const Paciente& p) {
@@ -88,7 +88,7 @@ void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
             if (it != pacientes.end()) {
                 pacientes.erase(it);
                 cout << "Paciente eliminado con éxito.\n";
-                bbdd.guardarDatosPacientes(pacientes); // Guardar cambios
+                bbdd.guardarDatosPacientes(pacientes);
             } else {
                 cout << "Paciente no encontrado.\n";
             }
@@ -113,7 +113,7 @@ void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
 
                 it->modificarDatos(nuevoNombre, nuevaFechaIngreso);
                 cout << "Datos del paciente actualizados con éxito.\n";
-                bbdd.guardarDatosPacientes(pacientes); // Guardar cambios
+                bbdd.guardarDatosPacientes(pacientes);
             } else {
                 cout << "Paciente no encontrado.\n";
             }
@@ -154,7 +154,7 @@ void gestionarMedicos(vector<Medico>& medicos, BBDD& bbdd) {
 
             medicos.emplace_back(nombre, ID, especialidad);
             cout << "Medico agregado con éxito.\n";
-            bbdd.guardarDatosMedicos(medicos); // Guardar en archivo
+            bbdd.guardarDatosMedicos(medicos);
         } else if (opcion == 2) { // Baja de médico
             int ID = obtenerIDValido();
             auto it = find_if(medicos.begin(), medicos.end(), [ID](const Medico& m) {
@@ -164,7 +164,7 @@ void gestionarMedicos(vector<Medico>& medicos, BBDD& bbdd) {
             if (it != medicos.end()) {
                 medicos.erase(it);
                 cout << "Medico eliminado con éxito.\n";
-                bbdd.guardarDatosMedicos(medicos); // Guardar cambios
+                bbdd.guardarDatosMedicos(medicos);
             } else {
                 cout << "Medico no encontrado.\n";
             }
@@ -182,7 +182,7 @@ void gestionarMedicos(vector<Medico>& medicos, BBDD& bbdd) {
 
                 it->asignarEspecialidad(nuevaEspecialidad);
                 cout << "Datos del medico actualizados con éxito.\n";
-                bbdd.guardarDatosMedicos(medicos); // Guardar cambios
+                bbdd.guardarDatosMedicos(medicos);
             } else {
                 cout << "Medico no encontrado.\n";
             }
@@ -199,7 +199,26 @@ void gestionarMedicos(vector<Medico>& medicos, BBDD& bbdd) {
 
 // Gestionar citas
 void gestionarCitas(vector<Cita>& citas, vector<Paciente>& pacientes, vector<Medico>& medicos, BBDD& bbdd) {
-    // (Código para gestionar citas ya incluido anteriormente)
+    int opcion;
+    do {
+        cout << "\n--- Gestion de Citas ---\n";
+        cout << "1. Asignar Cita\n";
+        cout << "2. Cancelar Cita\n";
+        cout << "3. Mostrar Citas\n";
+        cout << "0. Volver al Menu Principal\n";
+        cout << "Seleccione una opcion: ";
+        cin >> opcion;
+
+        if (opcion == 1) {
+            // Lógica para asignar citas
+        } else if (opcion == 2) {
+            // Lógica para cancelar citas
+        } else if (opcion == 3) {
+            // Mostrar citas
+        } else if (opcion != 0) {
+            cout << "Opción no válida. Intente de nuevo.\n";
+        }
+    } while (opcion != 0);
 }
 
 // Función principal
