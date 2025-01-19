@@ -19,6 +19,10 @@ class BBDD {
     void guardarDatosCitas(const vector<Cita>& citas);
     void cargarDatosCitas(vector<Cita>& citas);
 
+    //Método para Backup
+    void realizarBackup() const;
+    bool verificarYRealizarBackupAutomatico();
+
 };
 
 #endif
