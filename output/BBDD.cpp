@@ -9,7 +9,7 @@
 using namespace std;
 
 // Ruta base para los archivos CSV
-const string BASE_PATH = "./output/";
+const string BASE_PATH = "../";
 
 // Crear directorio si no existe
 void asegurarDirectorio(const string& path) {
