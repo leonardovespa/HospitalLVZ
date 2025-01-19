@@ -9,7 +9,7 @@
 using namespace std;
 
 // Ruta base para los archivos CSV
-const string BASE_PATH = "C:\\Users\\leona\\OneDrive\\Estudios LVZ\\MSMK Univertsity\\Units\\02_Year\\Unit20_AppliedProgramming_DesignPrinciples\\AB\\HospitalLVZ\\output\\";
+const string BASE_PATH = "./output/";
 
 // Guardar datos de Medicos
 void BBDD::guardarDatosMedicos(const vector<Medico>& medicos) {
