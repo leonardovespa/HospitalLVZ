@@ -1,28 +1,33 @@
 #ifndef MEDICO_H
 #define MEDICO_H
+
 #include <string>
 using namespace std;
 
 class Medico {
-    private:
+private:
     string nombre;
     int ID;
     string especialidad;
-    bool disponibilidad;
+    bool disponible;
 
-    public:
-    Medico(string nombre, int ID, string especialidad); // constructor
-    void altaMedico(string nombre, int ID, string especialidad);
-    void bajaMedico();
-    void asignarEspecialidad(string especialidadNueva);
-    void cambiarDisponibilidad(bool estado);
+public:
+    Medico(string nombre, int ID, string especialidad);
+
+    // Métodos de modificación
+    void modificarNombre(const string& nuevoNombre);
+    void modificarEspecialidad(const string& nuevaEspecialidad);
+    void modificarID(int nuevoID);
+    void cambiarDisponibilidad(bool disponibilidad);
+
+    // Mostrar datos
     void mostrarDatos() const;
-    int getID() const;
+
+    // Getters
     string getNombre() const;
+    int getID() const;
     string getEspecialidad() const;
     bool isDisponible() const;
-
-    void setDisponibilidad(bool estado);
 };
 
 #endif
