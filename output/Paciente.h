@@ -12,21 +12,23 @@ private:
     bool cronico; // Indica si el paciente tiene una enfermedad crónica
 
 public:
+    // Constructor
     Paciente(string nombre, int ID, string fechaIngreso, bool cronico = false);
 
-    void modificarDatos(string nuevoNombre, string nuevaFechaIngreso);
-    void mostrarDatos() const;
-    bool esCronico() const; // Método para verificar si es crónico
-
-    //Metodos para modificar datos especificos
+    // Métodos para modificar datos
+    void modificarDatos(const string& nuevoNombre, const string& nuevaFechaIngreso, bool esCronico);
     void modificarNombre(const string& nuevoNombre);
     void modificarFechaIngreso(const string& nuevaFechaIngreso);
-    void modificarCronico(bool nuevoEstado);
+    void modificarCronico(bool esCronico);
+
+    // Mostrar datos
+    void mostrarDatos() const;
 
     // Getters
     int getID() const;
     string getNombre() const;
     string getFechaIngreso() const;
+    bool esCronico() const;
 };
 
 #endif

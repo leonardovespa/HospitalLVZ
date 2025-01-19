@@ -82,7 +82,7 @@ void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
 
             pacientes.emplace_back(nombre, ID, fechaIngreso, cronico);
             cout << "Paciente agregado con éxito.\n";
-            bbdd.guardarDatosPacientes(pacientes); // Guardar en archivo
+            bbdd.guardarDatosPacientes(pacientes);
 
         } else if (opcion == 2) { // Baja de paciente
             int ID = obtenerIDValido();
@@ -93,7 +93,7 @@ void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
             if (it != pacientes.end()) {
                 pacientes.erase(it);
                 cout << "Paciente eliminado con éxito.\n";
-                bbdd.guardarDatosPacientes(pacientes); // Guardar cambios
+                bbdd.guardarDatosPacientes(pacientes);
             } else {
                 cout << "Paciente no encontrado.\n";
             }
@@ -154,7 +154,7 @@ void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
                             break;
                     }
                 } while (subOpcion != 0);
-                bbdd.guardarDatosPacientes(pacientes); // Guardar cambios
+                bbdd.guardarDatosPacientes(pacientes);
             } else {
                 cout << "Paciente no encontrado.\n";
             }
@@ -169,6 +169,8 @@ void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
         }
     } while (opcion != 0);
 }
+
+
 
 // Gestionar médicos
 void gestionarMedicos(vector<Medico>& medicos, BBDD& bbdd) {
