@@ -220,6 +220,21 @@ CMakeFiles/HospitalLVZ.dir/main.cpp.obj: \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/regex.tcc \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/regex_executor.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/regex_executor.tcc \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/fstream \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/x86_64-w64-mingw32/bits/basic_file.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/x86_64-w64-mingw32/bits/c++io.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/fstream.tcc \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/iomanip \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/quoted_string.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/chrono \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/ratio \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/parse_numbers.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/filesystem \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/fs_fwd.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/fs_path.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/codecvt \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/fs_dir.h \
+ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/fs_ops.h \
  C:\Users\leona\OneDrive\Estudios\ LVZ\MSMK\ Univertsity\Units\02_Year\Unit20_AppliedProgramming_DesignPrinciples\AB\HospitalLVZ\output\Paciente.h \
  C:\Users\leona\OneDrive\Estudios\ LVZ\MSMK\ Univertsity\Units\02_Year\Unit20_AppliedProgramming_DesignPrinciples\AB\HospitalLVZ\output\Medico.h \
  C:\Users\leona\OneDrive\Estudios\ LVZ\MSMK\ Univertsity\Units\02_Year\Unit20_AppliedProgramming_DesignPrinciples\AB\HospitalLVZ\output\Cita.h \
