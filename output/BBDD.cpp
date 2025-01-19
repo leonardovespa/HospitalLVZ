@@ -77,9 +77,11 @@ void BBDD::cargarDatosPacientes(vector<Paciente>& pacientes) {
         getline(ss, idStr, ',');
         getline(ss, nombre, ',');
         getline(ss, fechaIngreso, ',');
+        getline(ss, cronicoStr, ',');
 
         int id = stoi(idStr);
-        pacientes.emplace_back(nombre, id, fechaIngreso);
+        bool cronico = (cronicoStr == "1");  // Convertir "1" o "0" a booleano
+        pacientes.emplace_back(nombre, id, fechaIngreso, cronico);
     }
     archivo.close();
 }
