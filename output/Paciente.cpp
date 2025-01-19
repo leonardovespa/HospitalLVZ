@@ -2,64 +2,73 @@
 
 #include "Paciente.h"
 #include <iostream>
+#include <stdexcept>
 using namespace std;
 
-// Constructor actualizado
+// Constructor
 Paciente::Paciente(string nombre, int ID, string fechaIngreso, bool cronico)
     : nombre(nombre), ID(ID), fechaIngreso(fechaIngreso), cronico(cronico) {}
 
-// Modificar datos completos del paciente
-void Paciente::modificarDatos(const string& nuevoNombre, const string& nuevaFechaIngreso, bool esCronico) {
-    nombre = nuevoNombre;
-    fechaIngreso = nuevaFechaIngreso;
-    cronico = esCronico;
+// Métodos de modificación
+void Paciente::modificar(int atributo, const string& nuevoValor) {
+    switch (atributo) {
+        case 1: // Modificar Nombre
+            nombre = nuevoValor;
+            break;
+        case 2: // Modificar Fecha de Ingreso
+            fechaIngreso = nuevoValor;
+            break;
+        default:
+            throw invalid_argument("Atributo no válido para modificar.");
+    }
 }
 
-// Modificar solo el nombre del paciente
+void Paciente::modificar(int atributo, int nuevoValor) {
+    if (atributo == 3) { // Modificar ID
+        ID = nuevoValor;
+    } else {
+        throw invalid_argument("Atributo no válido para modificar.");
+    }
+}
+
 void Paciente::modificarNombre(const string& nuevoNombre) {
     nombre = nuevoNombre;
 }
 
-// Modificar solo la fecha de ingreso del paciente
 void Paciente::modificarFechaIngreso(const string& nuevaFechaIngreso) {
     fechaIngreso = nuevaFechaIngreso;
 }
 
-// Modificar el estado crónico del paciente
-void Paciente::modificarCronico(bool esCronico) {
-    cronico = esCronico;
-}
-
-// Modificar el ID del paciente
 void Paciente::modificarID(int nuevoID) {
     ID = nuevoID;
 }
 
-// Mostrar datos del paciente
+void Paciente::modificarCronico(bool esCronico) {
+    cronico = esCronico;
+}
+
+// Getters
+int Paciente::getID() const {
+    return ID;
+}
+
+string Paciente::getNombre() const {
+    return nombre;
+}
+
+string Paciente::getFechaIngreso() const {
+    return fechaIngreso;
+}
+
+bool Paciente::esCronico() const {
+    return cronico;
+}
+
+// Mostrar datos
 void Paciente::mostrarDatos() const {
     cout << "ID: " << ID << ", Nombre: " << nombre << ", Fecha de ingreso: " << fechaIngreso;
     if (cronico) {
         cout << " (Enfermedad Crónica)";
     }
     cout << endl;
-}
-
-// Obtener el ID del paciente
-int Paciente::getID() const {
-    return ID;
-}
-
-// Obtener el nombre del paciente
-string Paciente::getNombre() const {
-    return nombre;
-}
-
-// Obtener la fecha de ingreso del paciente
-string Paciente::getFechaIngreso() const {
-    return fechaIngreso;
-}
-
-// Verificar si el paciente tiene una enfermedad crónica
-bool Paciente::esCronico() const {
-    return cronico;
 }

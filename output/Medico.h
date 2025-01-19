@@ -9,25 +9,31 @@ private:
     string nombre;
     int ID;
     string especialidad;
-    bool disponible;
+    bool disponibilidad;
 
 public:
+    // Constructor
     Medico(string nombre, int ID, string especialidad);
 
-    // Métodos de modificación
+    // Métodos para modificar atributos
+    void modificar(int atributo, const string& nuevoValor); // Sobrecarga para string
+    void modificar(int atributo, int nuevoValor);           // Sobrecarga para int
+
+    // Métodos individuales de modificación
     void modificarNombre(const string& nuevoNombre);
     void modificarEspecialidad(const string& nuevaEspecialidad);
     void modificarID(int nuevoID);
-    void cambiarDisponibilidad(bool disponibilidad);
+    void cambiarDisponibilidad(bool estado);
+
+    // Getters
+    int getID() const;
+    string getNombre() const;
+    string getEspecialidad() const;
+    bool isDisponible() const;
 
     // Mostrar datos
     void mostrarDatos() const;
-
-    // Getters
-    string getNombre() const;
-    int getID() const;
-    string getEspecialidad() const;
-    bool isDisponible() const;
 };
 
-#endif
+#endif // MEDICO_H
+
