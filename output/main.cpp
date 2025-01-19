@@ -42,6 +42,7 @@ void mostrarMenu() {
     cout << "2. Gestionar Medicos\n";
     cout << "3. Gestionar Citas\n";
     cout << "4. Generar Reportes\n";
+    cout << "5. Generar Backup manualmente\n"
     cout << "0. Salir\n";
     cout << "Seleccione una opcion: ";
 }
