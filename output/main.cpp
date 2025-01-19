@@ -92,6 +92,7 @@ void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
             bbdd.guardarDatosPacientes(pacientes);
 
         } else if (opcion == 2) { // Baja de paciente
+            cout<<"(Solo caracteres numericos): ";
             int ID = obtenerIDValido();
             auto it = find_if(pacientes.begin(), pacientes.end(), [ID](const Paciente& p) {
                 return p.getID() == ID;
@@ -106,6 +107,7 @@ void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
             }
 
         } else if (opcion == 3) { // Modificar paciente
+            cout<<"(Solo caracteres numericos): ";
             int ID = obtenerIDValido();
             auto it = find_if(pacientes.begin(), pacientes.end(), [ID](const Paciente& p) {
                 return p.getID() == ID;
@@ -130,6 +132,7 @@ void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
                         it->modificar(subOpcion, nuevoValor);
                         cout << "Dato actualizado con exito.\n";
                     } else if (subOpcion == 3) {
+                        cout<<"(Solo caracteres numericos): ";
                         int nuevoValor = obtenerIDValido();
                         it->modificar(subOpcion, nuevoValor);
                         cout << "ID actualizado con exito.\n";
@@ -168,6 +171,7 @@ void gestionarMedicos(vector<Medico>& medicos, BBDD& bbdd) {
 
         if (opcion == 1) { // Alta de médico
             string nombre, especialidad;
+            cout<<"(Solo caracteres numericos): ";
             int ID = obtenerIDValido();
 
             cout << "Ingrese Nombre del Medico: ";
@@ -182,6 +186,7 @@ void gestionarMedicos(vector<Medico>& medicos, BBDD& bbdd) {
             bbdd.guardarDatosMedicos(medicos); // Guardar en archivo
 
         } else if (opcion == 2) { // Baja de médico
+            cout<<"(Solo caracteres numericos): ";
             int ID = obtenerIDValido();
             auto it = find_if(medicos.begin(), medicos.end(), [ID](const Medico& m) {
                 return m.getID() == ID;
@@ -196,6 +201,7 @@ void gestionarMedicos(vector<Medico>& medicos, BBDD& bbdd) {
             }
 
         } else if (opcion == 3) { // Modificar médico
+            cout<<"(Solo caracteres numericos): ";
             int ID = obtenerIDValido();
             auto it = find_if(medicos.begin(), medicos.end(), [ID](const Medico& m) {
                 return m.getID() == ID;
@@ -220,6 +226,7 @@ void gestionarMedicos(vector<Medico>& medicos, BBDD& bbdd) {
                         it->modificar(subOpcion, nuevoValor);
                         cout << "Dato actualizado con exito.\n";
                     } else if (subOpcion == 3) {
+                        cout<<"(Solo caracteres numericos): ";
                         int nuevoValor = obtenerIDValido();
                         it->modificar(subOpcion, nuevoValor);
                         cout << "ID actualizado con exito.\n";
@@ -260,7 +267,7 @@ void gestionarCitas(vector<Cita>& citas, vector<Paciente>& pacientes, vector<Med
             string fecha, urgencia;
 
             // Buscar paciente
-            cout << "Ingrese el ID del paciente: ";
+            cout << "Ingrese el ID del paciente (Solo caracteres numericos): ";
             pacienteID = obtenerIDValido();
             auto pacienteIt = find_if(pacientes.begin(), pacientes.end(), [pacienteID](const Paciente& p) {
                 return p.getID() == pacienteID;
@@ -278,7 +285,7 @@ void gestionarCitas(vector<Cita>& citas, vector<Paciente>& pacientes, vector<Med
             }
 
             // Solicitar ID del médico
-            cout << "Ingrese el ID del medico: ";
+            cout << "Ingrese el ID del medico (Solo caracteres numericos): ";
             medicoID = obtenerIDValido();
             auto medicoIt = find_if(medicos.begin(), medicos.end(), [medicoID](const Medico& m) {
                 return m.getID() == medicoID;
@@ -327,7 +334,7 @@ void gestionarCitas(vector<Cita>& citas, vector<Paciente>& pacientes, vector<Med
 
         } else if (opcion == 2) { // Cancelar Cita
             int citaID;
-            cout << "Ingrese el ID de la cita a cancelar: ";
+            cout << "Ingrese el ID de la cita a cancelar (Solo caracteres numericos): ";
             citaID = obtenerIDValido();
 
             auto citaIt = find_if(citas.begin(), citas.end(), [citaID](const Cita& c) {
@@ -382,13 +389,13 @@ void generarReportes(vector<Paciente>& pacientes, vector<Cita>& citas, vector<Me
         } else if (opcionReporte == 2) {
             int criterioOpcion;
             cout << "Seleccione el criterio:\n";
-            cout << "1. Por ID de Medico\n";
+            cout << "1. Por ID de Medico (Solo caracteres numericos)\n";
             cout << "2. Por especialidad\n";
             cin >> criterioOpcion;
 
             if (criterioOpcion == 1) {
                 int medicoID;
-                cout << "Ingrese el ID del Medico: ";
+                cout << "Ingrese el ID del Medico (Solo caracteres numericos): ";
                 cin >> medicoID;
                 reporte.reporteCitasPendientes(citas, medicos, medicoID);
             } else if (criterioOpcion == 2) {
