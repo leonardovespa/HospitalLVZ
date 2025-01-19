@@ -7,10 +7,25 @@ using namespace std;
 Paciente::Paciente(string nombre, int ID, string fechaIngreso, bool cronico)
     : nombre(nombre), ID(ID), fechaIngreso(fechaIngreso), cronico(cronico) {}
 
-// Modificar datos del paciente
+// Modificar datos del paciente (nombre y fecha de ingreso)
 void Paciente::modificarDatos(string nuevoNombre, string nuevaFechaIngreso) {
     nombre = nuevoNombre;
     fechaIngreso = nuevaFechaIngreso;
+}
+
+// Modificar solo el nombre
+void Paciente::modificarNombre(const string& nuevoNombre) {
+    nombre = nuevoNombre;
+}
+
+// Modificar solo la fecha de ingreso
+void Paciente::modificarFechaIngreso(const string& nuevaFechaIngreso) {
+    fechaIngreso = nuevaFechaIngreso;
+}
+
+// Modificar si el paciente tiene una enfermedad crónica
+void Paciente::modificarCronico(bool nuevoEstado) {
+    cronico = nuevoEstado;
 }
 
 // Mostrar datos del paciente
