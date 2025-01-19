@@ -19,7 +19,7 @@ void Paciente::modificar(int atributo, const string& nuevoValor) {
             fechaIngreso = nuevoValor;
             break;
         default:
-            throw invalid_argument("Atributo no válido para modificar.");
+            throw invalid_argument("Atributo no valido para modificar.");
     }
 }
 
@@ -27,7 +27,7 @@ void Paciente::modificar(int atributo, int nuevoValor) {
     if (atributo == 3) { // Modificar ID
         ID = nuevoValor;
     } else {
-        throw invalid_argument("Atributo no válido para modificar.");
+        throw invalid_argument("Atributo no valido para modificar.");
     }
 }
 
@@ -68,7 +68,7 @@ bool Paciente::esCronico() const {
 void Paciente::mostrarDatos() const {
     cout << "ID: " << ID << ", Nombre: " << nombre << ", Fecha de ingreso: " << fechaIngreso;
     if (cronico) {
-        cout << " (Enfermedad Crónica)";
+        cout << " (Enfermedad Cronica)";
     }
     cout << endl;
 }

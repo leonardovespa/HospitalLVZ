@@ -20,7 +20,7 @@ void Reporte::generarReportePacientesAtendidos(const vector<Paciente>& pacientes
 // Reporte de citas pendientes por médico o especialidad
 void Reporte::reporteCitasPendientes(const vector<Cita>& citas, const vector<Medico>& medicos, int medicoID, const string& especialidad) {
     if (medicoID != -1) {
-        cout << "Citas pendientes para médico con ID " << medicoID << ":\n";
+        cout << "Citas pendientes para medico con ID " << medicoID << ":\n";
         for (const auto& cita : citas) {
             if (cita.getMedicoID() == medicoID && cita.esActiva()) {
                 cita.mostrarCita();
@@ -38,13 +38,13 @@ void Reporte::reporteCitasPendientes(const vector<Cita>& citas, const vector<Med
             }
         }
     } else {
-        cout << "Debe proporcionar un ID de médico o una especialidad válida.\n";
+        cout << "Debe proporcionar un ID de medico o una especialidad valida.\n";
     }
 }
 
 // Reporte de pacientes con enfermedades crónicas
 void Reporte::reportePacientesCronicos(const vector<Paciente>& pacientes) {
-    cout << "\nPacientes con enfermedades crónicas:\n";
+    cout << "\nPacientes con enfermedades cronicas:\n";
     for (const auto& paciente : pacientes) {
         if (paciente.esCronico()) {
             paciente.mostrarDatos();

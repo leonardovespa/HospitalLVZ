@@ -19,7 +19,7 @@ void Medico::modificar(int atributo, const string& nuevoValor) {
             especialidad = nuevoValor;
             break;
         default:
-            throw invalid_argument("Atributo no válido para modificar.");
+            throw invalid_argument("Atributo no valido para modificar.");
     }
 }
 
@@ -27,7 +27,7 @@ void Medico::modificar(int atributo, int nuevoValor) {
     if (atributo == 3) { // Modificar ID
         ID = nuevoValor;
     } else {
-        throw invalid_argument("Atributo no válido para modificar.");
+        throw invalid_argument("Atributo no valido para modificar.");
     }
 }
 
@@ -67,5 +67,5 @@ bool Medico::isDisponible() const {
 // Mostrar datos
 void Medico::mostrarDatos() const {
     cout << "ID: " << ID << ", Nombre: " << nombre << ", Especialidad: " << especialidad
-         << ", Disponible: " << (disponibilidad ? "Sí" : "No") << endl;
+         << ", Disponible: " << (disponibilidad ? "Si" : "No") << endl;
 }

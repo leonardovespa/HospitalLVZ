@@ -11,11 +11,11 @@ using namespace std;
 // Ruta base para los archivos CSV
 const string BASE_PATH = "C:\\Users\\leona\\OneDrive\\Estudios LVZ\\MSMK Univertsity\\Units\\02_Year\\Unit20_AppliedProgramming_DesignPrinciples\\AB\\HospitalLVZ\\output\\";
 
-// Guardar datos de Médicos
+// Guardar datos de Medicos
 void BBDD::guardarDatosMedicos(const vector<Medico>& medicos) {
     ofstream archivo(BASE_PATH + "medicosLVZ.csv");
     if (!archivo.is_open()) {
-        cerr << "Error al abrir el archivo para guardar Médicos." << endl;
+        cerr << "Error al abrir el archivo para guardar Medicos." << endl;
         return;
     }
     for (const auto& medico : medicos) {
@@ -24,11 +24,11 @@ void BBDD::guardarDatosMedicos(const vector<Medico>& medicos) {
     archivo.close();
 }
 
-// Cargar datos de Médicos
+// Cargar datos de Medicos
 void BBDD::cargarDatosMedicos(vector<Medico>& medicos) {
     ifstream archivo(BASE_PATH + "medicosLVZ.csv");
     if (!archivo.is_open()) {
-        cerr << "Error al abrir el archivo para cargar Médicos." << endl;
+        cerr << "Error al abrir el archivo para cargar Medicos." << endl;
         return;
     }
     string linea;
@@ -133,7 +133,7 @@ void BBDD::cargarDatosCitas(vector<Cita>& citas) {
     archivo.close();
 }
 
-// Verificar y realizar backup automático
+// Verificar y realizar backup automatico
 bool BBDD::verificarYRealizarBackupAutomatico() {
     const string backupPath = BASE_PATH + "backup/";
     const string lastBackupFile = backupPath + "lastBackup.txt";

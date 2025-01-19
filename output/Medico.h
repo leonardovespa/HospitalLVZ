@@ -16,8 +16,8 @@ public:
     Medico(string nombre, int ID, string especialidad);
 
     // Métodos para modificar atributos
-    void modificar(int atributo, const string& nuevoValor); // Sobrecarga para string
-    void modificar(int atributo, int nuevoValor);           // Sobrecarga para int
+    void modificar(int atributo, const string& nuevoValor);
+    void modificar(int atributo, int nuevoValor);           
 
     // Métodos individuales de modificación
     void modificarNombre(const string& nuevoNombre);
@@ -35,5 +35,4 @@ public:
     void mostrarDatos() const;
 };
 
-#endif // MEDICO_H
-
+#endif
