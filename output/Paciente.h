@@ -9,19 +9,20 @@ private:
     string nombre;
     int ID;
     string fechaIngreso;
-    bool cronico; // Indica si el paciente tiene una enfermedad crónica
+    bool cronico;
 
 public:
     // Constructor
-    Paciente(string nombre, int ID, string fechaIngreso, bool cronico = false);
+    Paciente(string nombre, int ID, string fechaIngreso, bool cronico);
 
-    // Métodos para modificar datos
+    // Métodos de modificación
     void modificarDatos(const string& nuevoNombre, const string& nuevaFechaIngreso, bool esCronico);
     void modificarNombre(const string& nuevoNombre);
     void modificarFechaIngreso(const string& nuevaFechaIngreso);
     void modificarCronico(bool esCronico);
+    void modificarID(int nuevoID); // Nuevo método para modificar el ID
 
-    // Mostrar datos
+    // Métodos de visualización
     void mostrarDatos() const;
 
     // Getters
