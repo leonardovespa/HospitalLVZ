@@ -386,6 +386,7 @@ void generarReportes(vector<Paciente>& pacientes, vector<Cita>& citas, vector<Me
             cout << "Ingrese la fecha de fin (YYYY-MM-DD): ";
             cin >> fechaFin;
             reporte.generarReportePacientesAtendidos(pacientes, fechaInicio, fechaFin);
+
         } else if (opcionReporte == 2) {
             int criterioOpcion;
             cout << "Seleccione el criterio:\n";
@@ -394,27 +395,26 @@ void generarReportes(vector<Paciente>& pacientes, vector<Cita>& citas, vector<Me
             cin >> criterioOpcion;
 
             if (criterioOpcion == 1) {
-                int medicoID;
-                cout << "Ingrese el ID del Medico (Solo caracteres numericos): ";
-                cin >> medicoID;
+                int medicoID = obtenerIDValido(); // Valida que el ID sea un número
                 reporte.reporteCitasPendientes(citas, medicos, medicoID);
             } else if (criterioOpcion == 2) {
                 string especialidad;
                 cout << "Ingrese la especialidad: ";
-                cin.ignore(); // Limpiar el buffer
-                getline(cin, especialidad);
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+                getline(cin, especialidad); // Permite entradas con letras y espacios
                 reporte.reporteCitasPendientes(citas, medicos, -1, especialidad);
             } else {
-                cout << "Opción no valida. Intente de nuevo.\n";
+                cout << "Opcion no valida. Intente de nuevo.\n";
             }
+
         } else if (opcionReporte == 3) {
             reporte.reportePacientesCronicos(pacientes);
+
         } else if (opcionReporte != 0) {
-            cout << "Opción no valida. Intente de nuevo.\n";
+            cout << "Opcion no valida. Intente de nuevo.\n";
         }
     } while (opcionReporte != 0);
 }
-
 
 // Función principal
 int main() {
