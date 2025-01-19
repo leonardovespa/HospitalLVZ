@@ -4,6 +4,12 @@
 #include <regex>
 #include <algorithm>
 #include <limits>
+#include <fstream>
+#include <sstream>
+#include <iomanip>
+#include <chrono>
+#include <filesystem>
+#include <stdexcept>
 #include "Paciente.h"
 #include "Medico.h"
 #include "Cita.h"
