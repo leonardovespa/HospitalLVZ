@@ -15,21 +15,24 @@ public:
     // Constructor
     Paciente(string nombre, int ID, string fechaIngreso, bool cronico);
 
-    // Métodos de modificación
-    void modificarDatos(const string& nuevoNombre, const string& nuevaFechaIngreso, bool esCronico);
+    // Métodos para modificar atributos
+    void modificar(int atributo, const string& nuevoValor); // Sobrecarga para string
+    void modificar(int atributo, int nuevoValor);           // Sobrecarga para int
+
+    // Métodos individuales de modificación
     void modificarNombre(const string& nuevoNombre);
     void modificarFechaIngreso(const string& nuevaFechaIngreso);
+    void modificarID(int nuevoID);
     void modificarCronico(bool esCronico);
-    void modificarID(int nuevoID); // Nuevo método para modificar el ID
-
-    // Métodos de visualización
-    void mostrarDatos() const;
 
     // Getters
     int getID() const;
     string getNombre() const;
     string getFechaIngreso() const;
     bool esCronico() const;
+
+    // Mostrar datos
+    void mostrarDatos() const;
 };
 
 #endif
