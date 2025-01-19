@@ -42,8 +42,6 @@ void mostrarMenu() {
     cout << "2. Gestionar Medicos\n";
     cout << "3. Gestionar Citas\n";
     cout << "4. Generar Reportes\n";
-    cout << "5. Guardar Datos\n";
-    cout << "6. Cargar Datos\n";
     cout << "0. Salir\n";
     cout << "Seleccione una opcion: ";
 }
@@ -397,19 +395,6 @@ int main() {
                 break;
             case 4:
                 generarReportes(pacientes, citas, medicos);
-                break;
-
-            case 5:
-                bbdd.guardarDatosPacientes(pacientes);
-                bbdd.guardarDatosMedicos(medicos);
-                bbdd.guardarDatosCitas(citas);
-                cout << "Datos guardados con éxito.\n";
-                break;
-            case 6:
-                bbdd.cargarDatosPacientes(pacientes);
-                bbdd.cargarDatosMedicos(medicos);
-                bbdd.cargarDatosCitas(citas);
-                cout << "Datos cargados con éxito.\n";
                 break;
             case 0:
                 cout << "Saliendo del sistema...\n";
