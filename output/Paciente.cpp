@@ -30,6 +30,11 @@ void Paciente::modificarCronico(bool esCronico) {
     cronico = esCronico;
 }
 
+// Modificar el ID del paciente
+void Paciente::modificarID(int nuevoID) {
+    ID = nuevoID;
+}
+
 // Mostrar datos del paciente
 void Paciente::mostrarDatos() const {
     cout << "ID: " << ID << ", Nombre: " << nombre << ", Fecha de ingreso: " << fechaIngreso;
