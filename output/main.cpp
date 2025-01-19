@@ -68,6 +68,7 @@ void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
 
         if (opcion == 1) { // Alta de paciente
             string nombre, fechaIngreso;
+            cout<<"(Solo caracteres numericos): ";
             int ID = obtenerIDValido();
 
             cout << "Ingrese Nombre del Paciente: ";
