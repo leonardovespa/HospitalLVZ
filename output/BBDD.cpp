@@ -15,7 +15,7 @@ const string BASE_PATH = "C:\\Users\\leona\\OneDrive\\Estudios LVZ\\MSMK Univert
 void BBDD::guardarDatosMedicos(const vector<Medico>& medicos) {
     ofstream archivo(BASE_PATH + "medicosLVZ.csv");
     if (!archivo.is_open()) {
-        cerr << "Error al abrir el archivo para guardar Medicos." << endl;
+        cerr << "Error al abrir el archivo para guardar Médicos." << endl;
         return;
     }
     for (const auto& medico : medicos) {
@@ -28,7 +28,7 @@ void BBDD::guardarDatosMedicos(const vector<Medico>& medicos) {
 void BBDD::cargarDatosMedicos(vector<Medico>& medicos) {
     ifstream archivo(BASE_PATH + "medicosLVZ.csv");
     if (!archivo.is_open()) {
-        cerr << "Error al abrir el archivo para cargar Medicos." << endl;
+        cerr << "Error al abrir el archivo para cargar Médicos." << endl;
         return;
     }
     string linea;
@@ -57,7 +57,7 @@ void BBDD::guardarDatosPacientes(const vector<Paciente>& pacientes) {
         return;
     }
     for (const auto& paciente : pacientes) {
-        archivo << paciente.getID() << "," << paciente.getNombre() << "," << paciente.getFechaIngreso() << "\n";
+        archivo << paciente.getID() << "," << paciente.getNombre() << "," << paciente.getFechaIngreso() << "," << (paciente.esCronico() ? "1" : "0") << "\n";
     }
     archivo.close();
 }
@@ -72,7 +72,7 @@ void BBDD::cargarDatosPacientes(vector<Paciente>& pacientes) {
     string linea;
     while (getline(archivo, linea)) {
         stringstream ss(linea);
-        string idStr, nombre, fechaIngreso;
+        string idStr, nombre, fechaIngreso, cronicoStr;
 
         getline(ss, idStr, ',');
         getline(ss, nombre, ',');
@@ -80,7 +80,7 @@ void BBDD::cargarDatosPacientes(vector<Paciente>& pacientes) {
         getline(ss, cronicoStr, ',');
 
         int id = stoi(idStr);
-        bool cronico = (cronicoStr == "1");  // Convertir "1" o "0" a booleano
+        bool cronico = (cronicoStr == "1");
         pacientes.emplace_back(nombre, id, fechaIngreso, cronico);
     }
     archivo.close();
@@ -133,8 +133,7 @@ void BBDD::cargarDatosCitas(vector<Cita>& citas) {
     archivo.close();
 }
 
-//Verificar y realizar backup automatico
-
+// Verificar y realizar backup automático
 bool BBDD::verificarYRealizarBackupAutomatico() {
     const string backupPath = BASE_PATH + "backup/";
     const string lastBackupFile = backupPath + "lastBackup.txt";
@@ -161,7 +160,7 @@ bool BBDD::verificarYRealizarBackupAutomatico() {
     // Verificar si ya se realizó un backup hoy
     if (ultimaFechaBackup == fechaActual.str()) {
         cout << "El backup ya fue realizado hoy (" << ultimaFechaBackup << ")." << endl;
-        return false; // Backup ya realizado
+        return false;
     }
 
     // Realizar el backup y actualizar la fecha
@@ -172,9 +171,10 @@ bool BBDD::verificarYRealizarBackupAutomatico() {
         archivoBackup.close();
     }
 
-    return true; // Backup realizado con éxito
+    return true;
 }
 
+// Realizar backup
 void BBDD::realizarBackup() const {
     try {
         const string backupPath = BASE_PATH + "backup/";
