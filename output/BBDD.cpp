@@ -3,6 +3,9 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <filesystem>
+#include <chrono>
+#include <iomanip>
 using namespace std;
 
 // Ruta base para los archivos CSV
@@ -126,4 +129,70 @@ void BBDD::cargarDatosCitas(vector<Cita>& citas) {
         }
     }
     archivo.close();
+}
+
+//Verificar y realizar backup automatico
+
+bool BBDD::verificarYRealizarBackupAutomatico() {
+    const string backupPath = BASE_PATH + "backup/";
+    const string lastBackupFile = backupPath + "lastBackup.txt";
+
+    // Crear carpeta de backup si no existe
+    if (!filesystem::exists(backupPath)) {
+        filesystem::create_directory(backupPath);
+    }
+
+    // Obtener la fecha actual en formato YYYY-MM-DD
+    auto now = chrono::system_clock::now();
+    auto in_time_t = chrono::system_clock::to_time_t(now);
+    stringstream fechaActual;
+    fechaActual << put_time(localtime(&in_time_t), "%Y-%m-%d");
+
+    // Leer la última fecha de backup
+    string ultimaFechaBackup;
+    ifstream archivo(lastBackupFile);
+    if (archivo.is_open()) {
+        getline(archivo, ultimaFechaBackup);
+        archivo.close();
+    }
+
+    // Verificar si ya se realizó un backup hoy
+    if (ultimaFechaBackup == fechaActual.str()) {
+        cout << "El backup ya fue realizado hoy (" << ultimaFechaBackup << ")." << endl;
+        return false; // Backup ya realizado
+    }
+
+    // Realizar el backup y actualizar la fecha
+    realizarBackup();
+    ofstream archivoBackup(lastBackupFile);
+    if (archivoBackup.is_open()) {
+        archivoBackup << fechaActual.str();
+        archivoBackup.close();
+    }
+
+    return true; // Backup realizado con éxito
+}
+
+void BBDD::realizarBackup() const {
+    try {
+        const string backupPath = BASE_PATH + "backup/";
+        auto now = chrono::system_clock::now();
+        auto in_time_t = chrono::system_clock::to_time_t(now);
+        stringstream timestamp;
+        timestamp << put_time(localtime(&in_time_t), "%Y%m%d_%H%M%S");
+
+        vector<string> archivos = {"pacientesLVZ.csv", "medicosLVZ.csv", "citasLVZ.csv"};
+        for (const auto& archivo : archivos) {
+            string origen = BASE_PATH + archivo;
+            string destino = backupPath + archivo + "_" + timestamp.str();
+            if (filesystem::exists(origen)) {
+                filesystem::copy(origen, destino);
+                cout << "Respaldo creado: " << destino << endl;
+            } else {
+                cout << "Archivo no encontrado para respaldar: " << origen << endl;
+            }
+        }
+    } catch (const filesystem::filesystem_error& e) {
+        cerr << "Error al realizar el backup: " << e.what() << endl;
+    }
 }
