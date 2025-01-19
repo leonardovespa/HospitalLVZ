@@ -5,7 +5,7 @@ using namespace std;
 
 // Constructor
 Medico::Medico(string nombre, int ID, string especialidad)
-    : nombre(nombre), ID(ID), especialidad(especialidad), disponibilidad(true) {}
+    : nombre(nombre), ID(ID), especialidad(especialidad), disponible(true) {}
 
 // Métodos de modificación
 void Medico::modificarNombre(const string& nuevoNombre) {
@@ -21,7 +21,7 @@ void Medico::modificarID(int nuevoID) {
 }
 
 void Medico::cambiarDisponibilidad(bool estado) {
-    disponibilidad = estado;
+    disponible = estado;
 }
 
 // Getters
@@ -38,13 +38,13 @@ string Medico::getEspecialidad() const {
 }
 
 bool Medico::isDisponible() const {
-    return disponibilidad;
+    return disponible;
 }
 
 // Mostrar datos
 void Medico::mostrarDatos() const {
     cout << "ID: " << ID << ", Nombre: " << nombre
          << ", Especialidad: " << especialidad
-         << ", Disponible: " << (disponibilidad ? "Sí" : "No") << endl;
+         << ", Disponible: " << (disponible ? "Sí" : "No") << endl;
 }
 
