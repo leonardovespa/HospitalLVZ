@@ -105,73 +105,42 @@ void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
             }
 
         } else if (opcion == 3) { // Modificar paciente
-    int ID = obtenerIDValido();
-    auto it = find_if(pacientes.begin(), pacientes.end(), [ID](const Paciente& p) {
-        return p.getID() == ID;
-    });
+            int ID = obtenerIDValido();
+            auto it = find_if(pacientes.begin(), pacientes.end(), [ID](const Paciente& p) {
+                return p.getID() == ID;
+            });
 
-    if (it != pacientes.end()) {
-        int subOpcion;
-        do {
-            cout << "\n--- Modificar Paciente ---\n";
-            cout << "1. Modificar Nombre\n";
-            cout << "2. Modificar Fecha de Ingreso\n";
-            cout << "3. Modificar Estado Crónico\n";
-            cout << "4. Modificar ID\n";
-            cout << "0. Volver\n";
-            cout << "Seleccione una opción: ";
-            cin >> subOpcion;
+            if (it != pacientes.end()) {
+                int subOpcion;
+                do {
+                    cout << "\n--- Modificar Paciente ---\n";
+                    cout << "1. Modificar Nombre\n";
+                    cout << "2. Modificar Fecha de Ingreso\n";
+                    cout << "3. Modificar ID\n";
+                    cout << "0. Volver\n";
+                    cout << "Seleccione una opción: ";
+                    cin >> subOpcion;
 
-            switch (subOpcion) {
-                case 1: {
-                    string nuevoNombre;
-                    cout << "Ingrese Nuevo Nombre: ";
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    getline(cin, nuevoNombre);
-                    it->modificarNombre(nuevoNombre);
-                    cout << "Nombre actualizado con éxito.\n";
-                    break;
-                }
-                case 2: {
-                    string nuevaFechaIngreso;
-                    cout << "Ingrese Nueva Fecha de Ingreso (YYYY-MM-DD): ";
-                    cin >> nuevaFechaIngreso;
-                    while (!esFechaValida(nuevaFechaIngreso)) {
-                        cout << "Error: Formato de fecha inválido. Ingrese nuevamente (YYYY-MM-DD): ";
-                        cin >> nuevaFechaIngreso;
+                    if (subOpcion == 1 || subOpcion == 2) {
+                        string nuevoValor;
+                        cout << "Ingrese el nuevo valor: ";
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        getline(cin, nuevoValor);
+                        it->modificar(subOpcion, nuevoValor);
+                        cout << "Dato actualizado con éxito.\n";
+                    } else if (subOpcion == 3) {
+                        int nuevoValor = obtenerIDValido();
+                        it->modificar(subOpcion, nuevoValor);
+                        cout << "ID actualizado con éxito.\n";
+                    } else if (subOpcion != 0) {
+                        cout << "Opción no válida.\n";
                     }
-                    it->modificarFechaIngreso(nuevaFechaIngreso);
-                    cout << "Fecha de ingreso actualizada con éxito.\n";
-                    break;
-                }
-                case 3: {
-                    cout << "¿El paciente tiene una enfermedad crónica? (1: Sí, 0: No): ";
-                    int cronicoFlag;
-                    cin >> cronicoFlag;
-                    bool cronico = (cronicoFlag == 1);
-                    it->modificarCronico(cronico);
-                    cout << "Estado crónico actualizado con éxito.\n";
-                    break;
-                }
-                case 4: {
-                    int nuevoID = obtenerIDValido();
-                    it->modificarID(nuevoID);
-                    cout << "ID actualizado con éxito.\n";
-                    break;
-                }
-                case 0:
-                    cout << "Volviendo al menú anterior...\n";
-                    break;
-                default:
-                    cout << "Opción no válida. Intente nuevamente.\n";
-                    break;
-            }
-        } while (subOpcion != 0);
-        bbdd.guardarDatosPacientes(pacientes); // Guardar cambios
-    } else {
-        cout << "Paciente no encontrado.\n";
-    }
+                } while (subOpcion != 0);
 
+                bbdd.guardarDatosPacientes(pacientes);
+            } else {
+                cout << "Paciente no encontrado.\n";
+            }
         } else if (opcion == 4) { // Mostrar pacientes
             cout << "\n--- Lista de Pacientes ---\n";
             for (const auto& p : pacientes) {
@@ -183,9 +152,6 @@ void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
     } while (opcion != 0);
 }
 
-
-
-// Gestionar médicos
 // Gestionar médicos
 void gestionarMedicos(vector<Medico>& medicos, BBDD& bbdd) {
     int opcion;
