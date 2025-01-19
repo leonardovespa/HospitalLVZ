@@ -48,7 +48,6 @@ void mostrarMenu() {
 }
 
 // Gestionar pacientes
-// Gestionar pacientes
 void gestionarPacientes(vector<Paciente>& pacientes, BBDD& bbdd) {
     int opcion;
     do {
@@ -414,6 +413,12 @@ int main() {
     BBDD bbdd;
 
     bbdd.verificarYRealizarBackupAutomatico();
+
+    //Limpiar datos previos antes de realizar una nueva carga
+
+    pacientes.clear();
+    medicos.clear();
+    citas.clear();
 
     bbdd.cargarDatosPacientes(pacientes);
     bbdd.cargarDatosMedicos(medicos);
