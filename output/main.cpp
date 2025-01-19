@@ -220,32 +220,71 @@ void gestionarMedicos(vector<Medico>& medicos, BBDD& bbdd) {
                 cout << "Medico no encontrado.\n";
             }
         } else if (opcion == 3) { // Modificar médico
-            int ID = obtenerIDValido();
-            auto it = find_if(medicos.begin(), medicos.end(), [ID](const Medico& m) {
-                return m.getID() == ID;
-            });
+    int ID = obtenerIDValido();
+    auto it = find_if(medicos.begin(), medicos.end(), [ID](const Medico& m) {
+        return m.getID() == ID;
+    });
 
-            if (it != medicos.end()) {
-                string nuevaEspecialidad;
-                cout << "Ingrese Nueva Especialidad: ";
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                getline(cin, nuevaEspecialidad);
+    if (it != medicos.end()) {
+        int subOpcion;
+        do {
+            cout << "\n--- Modificar Médico ---\n";
+            cout << "1. Modificar Nombre\n";
+            cout << "2. Modificar Especialidad\n";
+            cout << "3. Modificar ID\n";
+            cout << "4. Cambiar Disponibilidad\n";
+            cout << "0. Volver\n";
+            cout << "Seleccione una opción: ";
+            cin >> subOpcion;
 
-                it->asignarEspecialidad(nuevaEspecialidad);
-                cout << "Datos del medico actualizados con éxito.\n";
-                bbdd.guardarDatosMedicos(medicos); // Guardar cambios
-            } else {
-                cout << "Medico no encontrado.\n";
+            switch (subOpcion) {
+                case 1: {
+                    string nuevoNombre;
+                    cout << "Ingrese Nuevo Nombre: ";
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    getline(cin, nuevoNombre);
+                    it->modificarNombre(nuevoNombre);
+                    cout << "Nombre actualizado con éxito.\n";
+                    break;
+                }
+                case 2: {
+                    string nuevaEspecialidad;
+                    cout << "Ingrese Nueva Especialidad: ";
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    getline(cin, nuevaEspecialidad);
+                    it->modificarEspecialidad(nuevaEspecialidad);
+                    cout << "Especialidad actualizada con éxito.\n";
+                    break;
+                }
+                case 3: {
+                    int nuevoID;
+                    cout << "Ingrese Nuevo ID: ";
+                    nuevoID = obtenerIDValido();
+                    it->modificarID(nuevoID);
+                    cout << "ID actualizado con éxito.\n";
+                    break;
+                }
+                case 4: {
+                    cout << "¿El médico está disponible? (1: Sí, 0: No): ";
+                    int disponibilidadFlag;
+                    cin >> disponibilidadFlag;
+                    bool disponibilidad = (disponibilidadFlag == 1);
+                    it->cambiarDisponibilidad(disponibilidad);
+                    cout << "Disponibilidad actualizada con éxito.\n";
+                    break;
+                }
+                case 0:
+                    cout << "Volviendo al menú anterior...\n";
+                    break;
+                default:
+                    cout << "Opción no válida. Intente nuevamente.\n";
+                    break;
             }
-        } else if (opcion == 4) { // Mostrar médicos
-            cout << "\n--- Lista de Medicos ---\n";
-            for (const auto& m : medicos) {
-                m.mostrarDatos();
-            }
-        } else if (opcion != 0) {
-            cout << "Opción no válida. Intente de nuevo.\n";
-        }
-    } while (opcion != 0);
+        } while (subOpcion != 0);
+        bbdd.guardarDatosMedicos(medicos); // Guardar cambios
+    } else {
+        cout << "Médico no encontrado.\n";
+    }
 }
 
     // Gestionar citas
