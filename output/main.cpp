@@ -374,6 +374,8 @@ int main() {
     vector<Cita> citas;
     BBDD bbdd;
 
+    bbdd.verificarYRealizarBackupAutomatico();
+
     bbdd.cargarDatosPacientes(pacientes);
     bbdd.cargarDatosMedicos(medicos);
     bbdd.cargarDatosCitas(citas);
@@ -396,6 +398,9 @@ int main() {
             case 4:
                 generarReportes(pacientes, citas, medicos);
                 break;
+             case 5:
+                bbdd.realizarBackup(); // Backup manual
+                break;    
             case 0:
                 cout << "Saliendo del sistema...\n";
                 bbdd.guardarDatosPacientes(pacientes);
