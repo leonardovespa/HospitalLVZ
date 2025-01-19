@@ -30,7 +30,7 @@ void Medico::asignarEspecialidad(string especialidadNueva) {
 
 void Medico::cambiarDisponibilidad(bool estado) {
 	disponibilidad = estado;
-    cout << "Disponibilidad del medico actualizada. Estado actual: " << (disponibilidad ? "Disponible" : "No disponible") << endl;
+    //cout << "Disponibilidad del medico actualizada. Estado actual: " << (disponibilidad ? "Disponible" : "No disponible") << endl;
 }
 
 void Medico::setDisponibilidad(bool estado) {
