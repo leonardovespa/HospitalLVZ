@@ -1,58 +1,50 @@
 // Clase Médico
-
 #include "Medico.h"
 #include <iostream>
 using namespace std;
 
 // Constructor
+Medico::Medico(string nombre, int ID, string especialidad)
+    : nombre(nombre), ID(ID), especialidad(especialidad), disponibilidad(true) {}
 
-Medico::Medico(string nombre, int ID, string especialidad) {
-	this->nombre = nombre;
-	this->ID = ID;
-	this->especialidad = especialidad;
-	this->disponibilidad = true;
+// Métodos de modificación
+void Medico::modificarNombre(const string& nuevoNombre) {
+    nombre = nuevoNombre;
 }
 
-void Medico::altaMedico(string nombre, int ID, string especialidad) {
-	this->nombre = nombre;
-	this->ID = ID;
-	this->especialidad = especialidad;
-	this->disponibilidad = true;
+void Medico::modificarEspecialidad(const string& nuevaEspecialidad) {
+    especialidad = nuevaEspecialidad;
 }
 
-void Medico::bajaMedico() {
-	cout << "medico " << nombre << " dado de baja con exito." << endl;
-}
-
-void Medico::asignarEspecialidad(string especialidadNueva) {
-	especialidad = especialidadNueva;
+void Medico::modificarID(int nuevoID) {
+    ID = nuevoID;
 }
 
 void Medico::cambiarDisponibilidad(bool estado) {
-	disponibilidad = estado;
-    //cout << "Disponibilidad del medico actualizada. Estado actual: " << (disponibilidad ? "Disponible" : "No disponible") << endl;
+    disponibilidad = estado;
 }
 
-void Medico::setDisponibilidad(bool estado) {
-	disponibilidad = estado;
-}
-
+// Getters
 int Medico::getID() const {
-	return ID;
+    return ID;
 }
 
 string Medico::getNombre() const {
-	return nombre;
+    return nombre;
 }
 
 string Medico::getEspecialidad() const {
-	return especialidad;
+    return especialidad;
 }
 
 bool Medico::isDisponible() const {
-	return disponibilidad;
+    return disponibilidad;
 }
 
+// Mostrar datos
 void Medico::mostrarDatos() const {
-	cout << "ID: " << ID << ", Nombre: " << nombre << ", Especialidad: " << especialidad << ", Disponible: " << (disponibilidad ? "Si" : "No") << endl;
+    cout << "ID: " << ID << ", Nombre: " << nombre
+         << ", Especialidad: " << especialidad
+         << ", Disponible: " << (disponibilidad ? "Sí" : "No") << endl;
 }
+
